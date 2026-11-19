@@ -1,0 +1,752 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Consequences of Teaching During Coaching</title>
+
+<style>
+  :root {
+    --purple: #4b287d;
+    --purple-dark: #321656;
+    --purple-light: #f3effa;
+    --teal: #007f86;
+    --teal-light: #e9f7f7;
+    --text: #273142;
+    --muted: #566275;
+    --border: #dfe3eb;
+    --background: #f7f8fb;
+    --white: #ffffff;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.7;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 28px 20px 60px;
+  }
+
+  .hero {
+    background: linear-gradient(
+      120deg,
+      var(--purple-dark),
+      var(--purple)
+    );
+    color: white;
+    border-radius: 16px;
+    padding: 40px 38px;
+    margin-bottom: 26px;
+  }
+
+  .eyebrow {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    text-transform: uppercase;
+    opacity: 0.88;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: clamp(27px, 4vw, 37px);
+    line-height: 1.25;
+    margin: 0 0 15px;
+  }
+
+  .hero p {
+    font-size: 17px;
+    margin: 0;
+    max-width: 760px;
+  }
+
+  .intro,
+  .section-card,
+  .conclusion {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 30px 32px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    color: var(--purple-dark);
+    font-size: 23px;
+    line-height: 1.35;
+    margin: 0 0 16px;
+  }
+
+  h3 {
+    color: var(--purple-dark);
+    font-size: 18px;
+    margin: 0 0 10px;
+  }
+
+  p {
+    margin: 0 0 15px;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 18px;
+  }
+
+  .number {
+    background: var(--purple);
+    color: white;
+    border-radius: 11px;
+    min-width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 19px;
+    flex-shrink: 0;
+  }
+
+  .section-header h2 {
+    margin: 5px 0 0;
+  }
+
+  .example {
+    background: var(--purple-light);
+    border-left: 4px solid var(--purple);
+    padding: 18px 21px;
+    border-radius: 0 10px 10px 0;
+    margin-top: 20px;
+  }
+
+  .example-label {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 7px;
+  }
+
+  .example p {
+    margin: 0;
+  }
+
+  .emphasis {
+    font-weight: 700;
+    color: var(--purple-dark);
+  }
+
+  .comparison {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 22px 0;
+  }
+
+  .compare-card {
+    border-radius: 12px;
+    padding: 21px;
+    border: 1px solid var(--border);
+  }
+
+  .compare-teaching {
+    background: #fff5f4;
+    border-color: #eed7d4;
+  }
+
+  .compare-coaching {
+    background: var(--teal-light);
+    border-color: #c9e9e8;
+  }
+
+  .compare-card h3 {
+    margin-bottom: 10px;
+  }
+
+  .compare-teaching h3 {
+    color: #91423c;
+  }
+
+  .compare-coaching h3 {
+    color: #00696e;
+  }
+
+  .compare-card p {
+    font-size: 15px;
+  }
+
+  .takeaway {
+    background: var(--teal-light);
+    border-left: 4px solid var(--teal);
+    padding: 18px 21px;
+    border-radius: 0 10px 10px 0;
+    margin-top: 20px;
+  }
+
+  .takeaway strong {
+    color: #00696e;
+  }
+
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 25px 0;
+  }
+
+  .closing-statement {
+    background: var(--purple-light);
+    border-radius: 12px;
+    padding: 22px 25px;
+    text-align: center;
+    color: var(--purple-dark);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1.55;
+    margin-top: 23px;
+  }
+
+  .footer {
+    font-size: 12px;
+    color: var(--muted);
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  @media (max-width: 650px) {
+    .container {
+      padding: 15px 12px 35px;
+    }
+
+    .hero {
+      padding: 29px 22px;
+    }
+
+    .intro,
+    .section-card,
+    .conclusion {
+      padding: 23px 20px;
+    }
+
+    .comparison {
+      grid-template-columns: 1fr;
+    }
+
+    .section-header {
+      gap: 12px;
+    }
+
+    h2 {
+      font-size: 21px;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <!-- HERO -->
+
+  <header class="hero">
+
+    <div class="eyebrow">
+      Intermediate Development | Navigating Content Conversations
+    </div>
+
+    <h1>
+      The Consequences of Teaching During Coaching
+    </h1>
+
+    <p>
+      Understanding why maintaining the distinction
+      between teaching and coaching matters for
+      students, Course Instructors, and Peer Navigators.
+    </p>
+
+  </header>
+
+
+  <!-- INTRODUCTION -->
+
+  <section class="intro" aria-labelledby="intro-title">
+
+    <h2 id="intro-title">
+      Helping Students Without Taking Over Their Learning
+    </h2>
+
+    <p>
+      As a Peer Navigator, you will encounter students
+      who are confused, frustrated, or struggling to
+      understand course material. Sometimes, the easiest
+      response may seem to be explaining the concept,
+      demonstrating how to solve the problem, or simply
+      providing the answer.
+    </p>
+
+    <p>
+      These responses often come from a genuine desire
+      to help. However, <strong>good intentions do not
+      always lead to the best learning outcomes.</strong>
+    </p>
+
+    <p>
+      Peer Navigators serve an important role in
+      supporting student success, but that role is
+      different from the role of a Course Instructor (CI).
+      Understanding the consequences of crossing that
+      boundary helps us protect the student experience,
+      strengthen our professional partnerships, and
+      provide more effective coaching.
+    </p>
+
+  </section>
+
+
+  <!-- CONSEQUENCE ONE -->
+
+  <section class="section-card" aria-labelledby="consequence-1">
+
+    <div class="section-header">
+      <div class="number" aria-hidden="true">1</div>
+      <h2 id="consequence-1">
+        We Risk Providing Inaccurate Information
+      </h2>
+    </div>
+
+    <p>
+      Peer Navigators are not expected to be subject
+      matter experts (SMEs). Even when we have experience
+      with a course or feel confident in our understanding
+      of a particular concept, that does not necessarily
+      mean we have the expertise needed to teach it
+      accurately.
+    </p>
+
+    <p>
+      Course content may be more complex than it initially
+      appears. There may be important exceptions,
+      distinctions, or expectations that we are unaware
+      of. When we attempt to explain academic content
+      without the appropriate expertise, we risk giving
+      students information that is incomplete,
+      oversimplified, or incorrect.
+    </p>
+
+    <p>
+      Students may then rely on that explanation as
+      they study, complete assignments, or prepare
+      for assessments.
+    </p>
+
+    <div class="example">
+      <div class="example-label">Consider This</div>
+      <p>
+        A student asks a Peer Navigator to explain
+        a concept that will appear on an upcoming
+        assessment. The Peer Navigator remembers
+        learning something similar and offers an
+        explanation. However, the explanation leaves
+        out an important distinction. The student
+        leaves feeling confident but has actually
+        developed an incomplete understanding
+        of the material.
+      </p>
+    </div>
+
+    <div class="takeaway">
+      <strong>Why this matters:</strong>
+      Students deserve accurate academic guidance.
+      When subject matter expertise is needed,
+      the Course Instructor is the appropriate
+      resource.
+    </div>
+
+  </section>
+
+
+  <!-- CONSEQUENCE TWO -->
+
+  <section class="section-card" aria-labelledby="consequence-2">
+
+    <div class="section-header">
+      <div class="number" aria-hidden="true">2</div>
+      <h2 id="consequence-2">
+        We Undermine the Role of the Course Instructor
+      </h2>
+    </div>
+
+    <p>
+      Course Instructors bring specialized academic
+      knowledge and instructional expertise to the
+      student experience. Their role includes helping
+      students understand course concepts, addressing
+      content-specific questions, and providing
+      guidance related to academic expectations.
+    </p>
+
+    <p>
+      When Peer Navigators begin teaching course
+      content, the distinction between these
+      roles becomes blurred.
+    </p>
+
+    <p>
+      Students may begin to see Peer Navigators
+      as an alternative to their Course Instructors,
+      rather than recognizing the unique support
+      that each role provides.
+    </p>
+
+    <p>
+      Over time, this can diminish the perceived
+      value of the Course Instructor's expertise
+      and make it less likely that students will
+      seek support from the appropriate resource.
+    </p>
+
+    <div class="example">
+      <div class="example-label">Consider This</div>
+      <p>
+        A student regularly attends peer coaching
+        appointments and asks content-related
+        questions. Because the Peer Navigator
+        repeatedly explains concepts and provides
+        answers, the student stops reaching out
+        to their Course Instructor. Eventually,
+        the student encounters a more complex
+        academic challenge but lacks an established
+        connection with the person best equipped
+        to help.
+      </p>
+    </div>
+
+    <div class="takeaway">
+      <strong>Why this matters:</strong>
+      Peer Navigators and Course Instructors
+      provide complementary forms of support.
+      Our goal is to reinforce the value of
+      both roles, not replace one with the other.
+    </div>
+
+  </section>
+
+
+  <!-- CONSEQUENCE THREE -->
+
+  <section class="section-card" aria-labelledby="consequence-3">
+
+    <div class="section-header">
+      <div class="number" aria-hidden="true">3</div>
+      <h2 id="consequence-3">
+        We Can Damage Trust Between Course Instructors
+        and Peer Navigators
+      </h2>
+    </div>
+
+    <p>
+      Effective student support depends on collaboration
+      and mutual trust between the professionals who
+      serve our students.
+    </p>
+
+    <p>
+      Course Instructors need to feel confident that
+      Peer Navigators understand and respect the
+      boundaries of their role. Likewise, Peer
+      Navigators benefit from positive relationships
+      with Course Instructors and clear pathways
+      for connecting students with academic support.
+    </p>
+
+    <p>
+      When Peer Navigators teach content, particularly
+      when their explanations conflict with what a
+      Course Instructor has communicated, that trust
+      can begin to deteriorate.
+    </p>
+
+    <p>
+      Course Instructors may become less confident
+      referring students to peer coaching or
+      collaborating with Peer Navigators if they
+      are concerned about inaccurate or
+      inconsistent academic guidance.
+    </p>
+
+    <div class="example">
+      <div class="example-label">Consider This</div>
+      <p>
+        A student tells their Course Instructor,
+        "My Peer Navigator explained it differently."
+        The Course Instructor now has to clarify
+        the concept while also addressing the
+        conflicting guidance the student received.
+        Repeated experiences like this can create
+        frustration and weaken confidence in the
+        peer coaching program.
+      </p>
+    </div>
+
+    <div class="takeaway">
+      <strong>Why this matters:</strong>
+      Respecting role boundaries demonstrates
+      professionalism, strengthens partnerships,
+      and helps students experience consistent,
+      coordinated support.
+    </div>
+
+  </section>
+
+
+  <!-- CONSEQUENCE FOUR -->
+
+  <section class="section-card" aria-labelledby="consequence-4">
+
+    <div class="section-header">
+      <div class="number" aria-hidden="true">4</div>
+      <h2 id="consequence-4">
+        We Take Away Student Ownership and Empowerment
+      </h2>
+    </div>
+
+    <p>
+      Perhaps the most important consequence of
+      teaching during a coaching session is the
+      impact it can have on the coaching relationship
+      itself.
+    </p>
+
+    <p>
+      <span class="emphasis">
+        Coaching is about empowering students
+        to become more confident, capable,
+        and independent learners.
+      </span>
+    </p>
+
+    <p>
+      Our responsibility is not simply to help
+      students arrive at an answer. It is to
+      support them in developing the thinking
+      processes, learning strategies, and
+      problem-solving skills that allow them
+      to make progress independently.
+    </p>
+
+    <p>
+      When we explain the content, solve the
+      problem, or provide the answer, we may
+      unintentionally remove the very opportunity
+      the student needs to develop those skills.
+    </p>
+
+    <p>
+      The Peer Navigator becomes the one doing
+      the thinking, while the student becomes
+      a passive recipient of information.
+      This shifts ownership away from the
+      student and undermines the purpose
+      of the coaching relationship.
+    </p>
+
+    <div class="comparison">
+
+      <div class="compare-card compare-teaching">
+        <h3>When We Teach</h3>
+        <p>
+          The Peer Navigator explains a concept,
+          demonstrates the solution, or provides
+          an answer.
+        </p>
+        <p>
+          <strong>The Peer Navigator does
+          the thinking for the student.</strong>
+        </p>
+      </div>
+
+      <div class="compare-card compare-coaching">
+        <h3>When We Coach</h3>
+        <p>
+          The Peer Navigator asks thoughtful
+          questions, supports the student's
+          exploration, and helps them identify
+          strategies or resources.
+        </p>
+        <p>
+          <strong>The student remains
+          responsible for the thinking.</strong>
+        </p>
+      </div>
+
+    </div>
+
+    <p>
+      Consider the difference between a student
+      who receives an explanation and a student
+      who works through a challenging question
+      with supportive coaching.
+    </p>
+
+    <p>
+      The first student may leave with an answer.
+      The second student has an opportunity to
+      leave with something more valuable:
+      an understanding of how they approached
+      the challenge, the confidence that they
+      can work through difficulties, and a
+      strategy they can apply again.
+    </p>
+
+    <div class="takeaway">
+      <strong>Why this matters:</strong>
+      Student success is not just about
+      understanding today's course content.
+      It is also about developing the confidence,
+      ownership, and independence needed
+      to navigate future challenges.
+    </div>
+
+  </section>
+
+
+  <!-- ROLE BOUNDARIES -->
+
+  <section class="section-card" aria-labelledby="boundaries-title">
+
+    <h2 id="boundaries-title">
+      Maintaining Boundaries Does Not Mean
+      Withholding Support
+    </h2>
+
+    <p>
+      Recognizing these consequences does not
+      mean that Peer Navigators should avoid
+      content-related conversations or immediately
+      shut down a student who asks a question
+      about course material.
+    </p>
+
+    <p>
+      Instead, it means being intentional
+      about <strong>how</strong> we engage
+      in those conversations.
+    </p>
+
+    <p>
+      We can help students explore what they
+      already understand, identify where they
+      are getting stuck, locate appropriate
+      resources, and apply effective learning
+      strategies without taking on the role
+      of a Course Instructor.
+    </p>
+
+    <div class="example">
+      <div class="example-label">For Example</div>
+
+      <p>
+        If a student says, "Can you explain
+        this concept to me?" a Peer Navigator
+        might respond:
+      </p>
+
+      <p style="margin-top:12px;">
+        <strong>
+          "Let's start with what you already
+          know about the concept. Which part
+          makes sense to you, and where are
+          you starting to feel stuck?"
+        </strong>
+      </p>
+
+      <p style="margin-top:12px;">
+        This keeps the student engaged in
+        the thinking process while helping
+        the Peer Navigator identify an
+        appropriate coaching strategy
+        or resource.
+      </p>
+    </div>
+
+    <p style="margin-top:18px;">
+      When a student needs an explanation
+      requiring subject matter expertise,
+      we can support them in connecting
+      with their Course Instructor.
+      That connection is not a failure
+      to help; it is an important part
+      of effective coaching.
+    </p>
+
+  </section>
+
+
+  <!-- CONCLUSION -->
+
+  <section class="conclusion" aria-labelledby="closing-title">
+
+    <h2 id="closing-title">
+      The Bigger Picture
+    </h2>
+
+    <p>
+      The boundary between teaching and
+      coaching exists for important reasons.
+      It protects the accuracy of the
+      information students receive,
+      respects the expertise of Course
+      Instructors, preserves professional
+      trust, and helps students develop
+      ownership of their learning.
+    </p>
+
+    <p>
+      As Peer Navigators, we bring value
+      to the student experience not
+      because we know every answer,
+      but because we know how to help
+      students develop the skills
+      to seek, evaluate, and work
+      toward answers themselves.
+    </p>
+
+    <div class="closing-statement">
+      Our goal is not to be the person
+      who has the answers.
+      <br>
+      Our goal is to help students
+      become confident in their
+      ability to find them.
+    </div>
+
+  </section>
+
+
+  <footer class="footer">
+    Peer Intern Development Program |
+    Intermediate Level |
+    Navigating Content Conversations
+  </footer>
+
+</main>
+
+</body>
+</html>
