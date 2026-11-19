@@ -8,16 +8,19 @@
 
 <style>
   :root {
-    --purple: #4b287d;
-    --purple-dark: #321656;
-    --purple-light: #f3effa;
-    --teal: #007f86;
-    --teal-light: #e9f7f7;
-    --text: #273142;
-    --muted: #566275;
-    --border: #dfe3eb;
-    --background: #f7f8fb;
-    --white: #ffffff;
+    --navy-dark: #001731;
+    --navy: #002855;
+    --light-blue: #EEF6F9;
+    --light-gray: #F1F1F1;
+    --gray: #A7A7A7;
+    --blue: #0070F0;
+    --sky-blue: #46B1EF;
+    --green: #97E142;
+    --white: #FFFFFF;
+    --border: #D9E4EB;
+    --text: #001731;
+    --muted: #536477;
+    --shadow: 0 8px 24px rgba(0, 23, 49, 0.10);
   }
 
   * {
@@ -26,7 +29,7 @@
 
   body {
     margin: 0;
-    background: var(--background);
+    background: var(--light-blue);
     color: var(--text);
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.7;
@@ -41,13 +44,15 @@
   .hero {
     background: linear-gradient(
       120deg,
-      var(--purple-dark),
-      var(--purple)
+      var(--navy-dark),
+      var(--navy)
     );
-    color: white;
+    color: var(--white);
     border-radius: 16px;
     padding: 40px 38px;
     margin-bottom: 26px;
+    border-bottom: 5px solid var(--green);
+    box-shadow: var(--shadow);
   }
 
   .eyebrow {
@@ -55,7 +60,7 @@
     font-weight: 700;
     letter-spacing: 1.6px;
     text-transform: uppercase;
-    opacity: 0.88;
+    color: var(--green);
     margin-bottom: 12px;
   }
 
@@ -63,12 +68,14 @@
     font-size: clamp(27px, 4vw, 37px);
     line-height: 1.25;
     margin: 0 0 15px;
+    color: var(--white);
   }
 
   .hero p {
     font-size: 17px;
     margin: 0;
     max-width: 760px;
+    color: var(--white);
   }
 
   .intro,
@@ -79,17 +86,18 @@
     border-radius: 14px;
     padding: 30px 32px;
     margin-bottom: 20px;
+    box-shadow: 0 3px 12px rgba(0, 23, 49, 0.045);
   }
 
   h2 {
-    color: var(--purple-dark);
+    color: var(--navy);
     font-size: 23px;
     line-height: 1.35;
     margin: 0 0 16px;
   }
 
   h3 {
-    color: var(--purple-dark);
+    color: var(--navy);
     font-size: 18px;
     margin: 0 0 10px;
   }
@@ -110,8 +118,8 @@
   }
 
   .number {
-    background: var(--purple);
-    color: white;
+    background: var(--navy);
+    color: var(--white);
     border-radius: 11px;
     min-width: 43px;
     height: 43px;
@@ -121,6 +129,7 @@
     font-weight: bold;
     font-size: 19px;
     flex-shrink: 0;
+    border-bottom: 3px solid var(--green);
   }
 
   .section-header h2 {
@@ -128,8 +137,8 @@
   }
 
   .example {
-    background: var(--purple-light);
-    border-left: 4px solid var(--purple);
+    background: var(--light-blue);
+    border-left: 4px solid var(--sky-blue);
     padding: 18px 21px;
     border-radius: 0 10px 10px 0;
     margin-top: 20px;
@@ -138,7 +147,7 @@
   .example-label {
     text-transform: uppercase;
     letter-spacing: 1px;
-    color: var(--purple);
+    color: var(--navy);
     font-size: 12px;
     font-weight: 700;
     margin-bottom: 7px;
@@ -148,9 +157,13 @@
     margin: 0;
   }
 
+  .example p + p {
+    margin-top: 12px;
+  }
+
   .emphasis {
     font-weight: 700;
-    color: var(--purple-dark);
+    color: var(--navy);
   }
 
   .comparison {
@@ -167,25 +180,18 @@
   }
 
   .compare-teaching {
-    background: #fff5f4;
-    border-color: #eed7d4;
+    background: var(--light-gray);
+    border-top: 4px solid var(--gray);
   }
 
   .compare-coaching {
-    background: var(--teal-light);
-    border-color: #c9e9e8;
+    background: var(--light-blue);
+    border-top: 4px solid var(--green);
   }
 
   .compare-card h3 {
     margin-bottom: 10px;
-  }
-
-  .compare-teaching h3 {
-    color: #91423c;
-  }
-
-  .compare-coaching h3 {
-    color: #00696e;
+    color: var(--navy);
   }
 
   .compare-card p {
@@ -193,33 +199,28 @@
   }
 
   .takeaway {
-    background: var(--teal-light);
-    border-left: 4px solid var(--teal);
+    background: #F5FAEE;
+    border-left: 4px solid var(--green);
     padding: 18px 21px;
     border-radius: 0 10px 10px 0;
     margin-top: 20px;
   }
 
   .takeaway strong {
-    color: #00696e;
-  }
-
-  .divider {
-    height: 1px;
-    background: var(--border);
-    margin: 25px 0;
+    color: var(--navy);
   }
 
   .closing-statement {
-    background: var(--purple-light);
+    background: var(--navy);
     border-radius: 12px;
     padding: 22px 25px;
     text-align: center;
-    color: var(--purple-dark);
+    color: var(--white);
     font-size: 19px;
     font-weight: 700;
     line-height: 1.55;
     margin-top: 23px;
+    border-bottom: 4px solid var(--green);
   }
 
   .footer {
@@ -260,11 +261,9 @@
 </head>
 
 <body>
-
 <main class="container">
 
-  <!-- HERO -->
-
+  <!-- HEADER -->
   <header class="hero">
 
     <div class="eyebrow">
@@ -278,14 +277,13 @@
     <p>
       Understanding why maintaining the distinction
       between teaching and coaching matters for
-      students, Course Instructors, and Peer Navigators.
+      students and Peer Navigators.
     </p>
 
   </header>
 
 
   <!-- INTRODUCTION -->
-
   <section class="intro" aria-labelledby="intro-title">
 
     <h2 id="intro-title">
@@ -310,7 +308,7 @@
     <p>
       Peer Navigators serve an important role in
       supporting student success, but that role is
-      different from the role of a Course Instructor (CI).
+      different from the role of a Course Instructor.
       Understanding the consequences of crossing that
       boundary helps us protect the student experience,
       strengthen our professional partnerships, and
@@ -321,7 +319,6 @@
 
 
   <!-- CONSEQUENCE ONE -->
-
   <section class="section-card" aria-labelledby="consequence-1">
 
     <div class="section-header">
@@ -383,7 +380,6 @@
 
 
   <!-- CONSEQUENCE TWO -->
-
   <section class="section-card" aria-labelledby="consequence-2">
 
     <div class="section-header">
@@ -405,17 +401,10 @@
     <p>
       When Peer Navigators begin teaching course
       content, the distinction between these
-      roles becomes blurred.
-    </p>
-
-    <p>
-      Students may begin to see Peer Navigators
+      roles becomes blurred. Students may begin to see Peer Navigators
       as an alternative to their Course Instructors,
       rather than recognizing the unique support
-      that each role provides.
-    </p>
-
-    <p>
+      that each role provides. 
       Over time, this can diminish the perceived
       value of the Course Instructor's expertise
       and make it less likely that students will
@@ -425,7 +414,7 @@
     <div class="example">
       <div class="example-label">Consider This</div>
       <p>
-        A student regularly attends peer coaching
+        A student regularly attends peer navigator
         appointments and asks content-related
         questions. Because the Peer Navigator
         repeatedly explains concepts and provides
@@ -450,7 +439,6 @@
 
 
   <!-- CONSEQUENCE THREE -->
-
   <section class="section-card" aria-labelledby="consequence-3">
 
     <div class="section-header">
@@ -464,29 +452,20 @@
     <p>
       Effective student support depends on collaboration
       and mutual trust between the professionals who
-      serve our students.
-    </p>
-
-    <p>
+      serve our students. 
       Course Instructors need to feel confident that
       Peer Navigators understand and respect the
-      boundaries of their role. Likewise, Peer
-      Navigators benefit from positive relationships
-      with Course Instructors and clear pathways
-      for connecting students with academic support.
+      boundaries of their role. 
     </p>
 
     <p>
       When Peer Navigators teach content, particularly
       when their explanations conflict with what a
       Course Instructor has communicated, that trust
-      can begin to deteriorate.
-    </p>
-
-    <p>
-      Course Instructors may become less confident
-      referring students to peer coaching or
-      collaborating with Peer Navigators if they
+      can begin to deteriorate. 
+      Course instructors may become less confident
+      referring students to peer navigators or
+      collaborating with peer navigators if they
       are concerned about inaccurate or
       inconsistent academic guidance.
     </p>
@@ -495,13 +474,13 @@
       <div class="example-label">Consider This</div>
       <p>
         A student tells their Course Instructor,
-        "My Peer Navigator explained it differently."
+        "My peer navigator explained it differently."
         The Course Instructor now has to clarify
         the concept while also addressing the
         conflicting guidance the student received.
         Repeated experiences like this can create
         frustration and weaken confidence in the
-        peer coaching program.
+        peer navigator program.
       </p>
     </div>
 
@@ -517,7 +496,6 @@
 
 
   <!-- CONSEQUENCE FOUR -->
-
   <section class="section-card" aria-labelledby="consequence-4">
 
     <div class="section-header">
@@ -555,10 +533,7 @@
       When we explain the content, solve the
       problem, or provide the answer, we may
       unintentionally remove the very opportunity
-      the student needs to develop those skills.
-    </p>
-
-    <p>
+      the student needs to develop those skills. 
       The Peer Navigator becomes the one doing
       the thinking, while the student becomes
       a passive recipient of information.
@@ -577,8 +552,10 @@
           an answer.
         </p>
         <p>
-          <strong>The Peer Navigator does
-          the thinking for the student.</strong>
+          <strong>
+            The Peer Navigator does
+            the thinking for the student.
+          </strong>
         </p>
       </div>
 
@@ -591,8 +568,10 @@
           strategies or resources.
         </p>
         <p>
-          <strong>The student remains
-          responsible for the thinking.</strong>
+          <strong>
+            The student remains
+            responsible for the thinking.
+          </strong>
         </p>
       </div>
 
@@ -602,10 +581,7 @@
       Consider the difference between a student
       who receives an explanation and a student
       who works through a challenging question
-      with supportive coaching.
-    </p>
-
-    <p>
+      with supportive coaching. 
       The first student may leave with an answer.
       The second student has an opportunity to
       leave with something more valuable:
@@ -628,7 +604,6 @@
 
 
   <!-- ROLE BOUNDARIES -->
-
   <section class="section-card" aria-labelledby="boundaries-title">
 
     <h2 id="boundaries-title">
@@ -641,10 +616,7 @@
       mean that Peer Navigators should avoid
       content-related conversations or immediately
       shut down a student who asks a question
-      about course material.
-    </p>
-
-    <p>
+      about course material. 
       Instead, it means being intentional
       about <strong>how</strong> we engage
       in those conversations.
@@ -668,7 +640,7 @@
         might respond:
       </p>
 
-      <p style="margin-top:12px;">
+      <p>
         <strong>
           "Let's start with what you already
           know about the concept. Which part
@@ -677,7 +649,7 @@
         </strong>
       </p>
 
-      <p style="margin-top:12px;">
+      <p>
         This keeps the student engaged in
         the thinking process while helping
         the Peer Navigator identify an
@@ -700,7 +672,6 @@
 
 
   <!-- CONCLUSION -->
-
   <section class="conclusion" aria-labelledby="closing-title">
 
     <h2 id="closing-title">
@@ -739,7 +710,6 @@
 
   </section>
 
-
   <footer class="footer">
     Peer Intern Development Program |
     Intermediate Level |
@@ -747,6 +717,5 @@
   </footer>
 
 </main>
-
 </body>
 </html>
