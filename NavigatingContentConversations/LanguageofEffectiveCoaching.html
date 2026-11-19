@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Language of Effective Coaching</title>
+
+<style>
+:root {
+  --navy-dark: #001731;
+  --navy: #002855;
+  --blue: #0070F0;
+  --sky-blue: #46B1EF;
+  --green: #97E142;
+  --light-blue: #EEF6F9;
+  --light-gray: #F1F1F1;
+  --white: #FFFFFF;
+  --border: #D9E4EB;
+  --text: #001731;
+  --muted: #536477;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--light-blue);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 55px;
+}
+
+.hero {
+  background: linear-gradient(120deg, var(--navy-dark), var(--navy));
+  border-bottom: 5px solid var(--green);
+  color: white;
+  border-radius: 16px;
+  padding: 38px;
+  margin-bottom: 22px;
+  box-shadow: 0 8px 24px rgba(0,23,49,.10);
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(27px,4vw,37px);
+  line-height: 1.25;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,23,49,.045);
+}
+
+h2 {
+  color: var(--navy);
+  font-size: 23px;
+  line-height: 1.35;
+  margin: 0 0 14px;
+}
+
+h3 {
+  color: var(--navy);
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+p { margin: 0 0 14px; }
+p:last-child { margin-bottom: 0; }
+
+.comparison {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  gap: 16px;
+  margin: 22px 0;
+}
+
+.compare {
+  padding: 22px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.teaching {
+  background: var(--light-gray);
+  border-top: 4px solid #A7A7A7;
+}
+
+.coaching {
+  background: var(--light-blue);
+  border-top: 4px solid var(--green);
+}
+
+.label {
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 9px;
+  color: var(--navy);
+}
+
+.key-idea {
+  background: var(--navy);
+  color: white;
+  padding: 20px 24px;
+  border-radius: 12px;
+  text-align: center;
+  margin: 18px 0 0;
+  font-size: 19px;
+  font-weight: 700;
+  border-bottom: 4px solid var(--green);
+}
+
+.examples {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.example {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.example-title {
+  background: var(--navy);
+  color: white;
+  padding: 10px 18px;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.example-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.example-half {
+  padding: 18px;
+}
+
+.example-half:first-child {
+  background: var(--light-gray);
+  border-right: 1px solid var(--border);
+}
+
+.example-half:last-child {
+  background: var(--light-blue);
+}
+
+.example-half p {
+  font-size: 15px;
+  margin: 0;
+}
+
+.takeaway {
+  background: #F5FAEE;
+  border-left: 4px solid var(--green);
+  padding: 19px 22px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 20px;
+}
+
+.next-step {
+  background: var(--navy);
+  color: white;
+  border-radius: 14px;
+  padding: 27px 30px;
+  border-bottom: 5px solid var(--green);
+}
+
+.next-step h2 {
+  color: white;
+}
+
+.footer {
+  text-align: center;
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 25px;
+}
+
+@media(max-width:650px) {
+  .container { padding: 15px 12px 35px; }
+  .hero { padding: 28px 22px; }
+  .card { padding: 22px 20px; }
+  .comparison,.example-content {
+    grid-template-columns: 1fr;
+  }
+  .example-half:first-child {
+    border-right: none;
+    border-bottom: 1px solid var(--border);
+  }
+}
+</style>
+</head>
+
+<body>
+<main class="container">
+
+  <header class="hero">
+    <div class="eyebrow">
+      Intermediate Development | Navigating Content Conversations
+    </div>
+    <h1>The Language of Effective Coaching</h1>
+    <p>
+      How the words we choose can shift a conversation
+      from providing answers to empowering students.
+    </p>
+  </header>
+
+  <section class="card">
+    <h2>Teaching Is Telling. Coaching Is Exploring.</h2>
+
+    <p>
+      The language we use during a coaching session
+      influences who is doing the thinking and who
+      takes ownership of the learning process.
+    </p>
+
+    <p>
+      <strong>Teaching language</strong> focuses on
+      delivering information, explaining concepts,
+      demonstrating solutions, or telling students
+      what they should do.
+    </p>
+
+    <p>
+      <strong>Coaching language</strong> focuses on
+      asking thoughtful questions, encouraging
+      reflection, and guiding students as they
+      explore their own understanding and
+      possible next steps.
+    </p>
+
+    <div class="comparison">
+      <div class="compare teaching">
+        <div class="label">Teaching: Telling</div>
+        <h3>"Here's what you need to know."</h3>
+        <p>
+          The Peer Navigator directs the conversation
+          by providing information or solutions.
+        </p>
+      </div>
+
+      <div class="compare coaching">
+        <div class="label">Coaching: Exploring</div>
+        <h3>"What do you already know?"</h3>
+        <p>
+          The Peer Navigator guides the conversation
+          through questions that encourage the
+          student to think.
+        </p>
+      </div>
+    </div>
+
+    <div class="key-idea">
+      Teaching gives students information.
+      Coaching helps students develop
+      their own understanding.
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>What Does This Sound Like in Practice?</h2>
+
+    <p>
+      Coaching language doesn't mean avoiding a
+      student's question. It means responding in
+      a way that keeps the student actively
+      involved in the learning process.
+    </p>
+
+    <div class="examples">
+
+      <div class="example">
+        <div class="example-title">
+          Example 1: A Student Is Confused
+        </div>
+        <div class="example-content">
+          <div class="example-half">
+            <div class="label">Teaching Language</div>
+            <p>
+              "Let me explain what that concept means."
+            </p>
+          </div>
+          <div class="example-half">
+            <div class="label">Coaching Language</div>
+            <p>
+              "Which part of the concept is making
+              sense so far, and where are you
+              getting stuck?"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-title">
+          Example 2: A Student Doesn't Know How to Start
+        </div>
+        <div class="example-content">
+          <div class="example-half">
+            <div class="label">Teaching Language</div>
+            <p>
+              "First, you need to read this section
+              and write down the key definitions."
+            </p>
+          </div>
+          <div class="example-half">
+            <div class="label">Coaching Language</div>
+            <p>
+              "What approach have you considered
+              for getting started?"
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="example">
+        <div class="example-title">
+          Example 3: A Student Asks for an Answer
+        </div>
+        <div class="example-content">
+          <div class="example-half">
+            <div class="label">Teaching Language</div>
+            <p>
+              "The correct answer is B because..."
+            </p>
+          </div>
+          <div class="example-half">
+            <div class="label">Coaching Language</div>
+            <p>
+              "Walk me through how you're
+              approaching the question.
+              What stands out to you?"
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="takeaway">
+      <strong>Remember:</strong>
+      Coaching is not simply turning every
+      statement into a question. The goal
+      is to create opportunities for students
+      to reflect, make decisions, and
+      take ownership of their progress.
+    </div>
+
+  </section>
+
+  <section class="next-step">
+    <h2>Up Next: Put It Into Practice</h2>
+    <p>
+      Now that you've explored the difference
+      between teaching and coaching language,
+      it's time to apply it.
+    </p>
+    <p>
+      On the next Canvas page, you'll be given
+      several examples of teaching language.
+      Your task will be to rewrite each one
+      using coaching language that encourages
+      student thinking, exploration, and ownership.
+    </p>
+  </section>
+
+  <footer class="footer">
+    Peer Intern Development Program |
+    Intermediate Level |
+    Navigating Content Conversations
+  </footer>
+
+</main>
+</body>
+</html>
