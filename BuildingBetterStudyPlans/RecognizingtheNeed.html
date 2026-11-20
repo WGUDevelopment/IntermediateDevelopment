@@ -1,0 +1,878 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recognizing the Need | Building Better Study Plans</title>
+
+<style>
+:root {
+  --navy-dark: #001731;
+  --navy: #002855;
+  --blue: #0070F0;
+  --sky: #46B1EF;
+  --green: #97E142;
+  --light-blue: #EEF6F9;
+  --light-gray: #F1F1F1;
+  --white: #FFFFFF;
+  --border: #D9E4EB;
+  --text: #001731;
+  --muted: #536477;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--light-blue);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 28px 20px 55px;
+}
+
+.hero {
+  background: linear-gradient(120deg,
+    var(--navy-dark), var(--navy));
+  color: white;
+  border-radius: 16px;
+  padding: 40px 38px;
+  margin-bottom: 22px;
+  border-bottom: 5px solid var(--green);
+  box-shadow: 0 8px 24px rgba(0,23,49,.10);
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 12px;
+}
+
+h1 {
+  font-size: clamp(27px,4vw,37px);
+  line-height: 1.25;
+  margin: 0 0 13px;
+}
+
+.hero p {
+  font-size: 17px;
+  margin: 0;
+  max-width: 760px;
+}
+
+.card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 29px 32px;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px rgba(0,23,49,.045);
+}
+
+h2 {
+  color: var(--navy);
+  font-size: 23px;
+  line-height: 1.35;
+  margin: 0 0 15px;
+}
+
+h3 {
+  color: var(--navy);
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+p { margin: 0 0 15px; }
+p:last-child { margin-bottom: 0; }
+
+strong { color: var(--navy); }
+
+.hero strong,
+.closing strong {
+  color: white;
+}
+
+/* INTRO HIGHLIGHT */
+
+.definition {
+  background: var(--light-blue);
+  border-left: 4px solid var(--sky);
+  padding: 19px 22px;
+  border-radius: 0 10px 10px 0;
+  margin: 20px 0;
+}
+
+/* SCENARIO CARDS */
+
+.scenarios {
+  display: grid;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.scenario {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.scenario-header {
+  background: var(--navy);
+  color: white;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.scenario-content {
+  padding: 18px 21px;
+  background: var(--light-blue);
+}
+
+.scenario-content p {
+  font-size: 15px;
+}
+
+.scenario-content .student-quote {
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.scenario-content .why {
+  font-size: 14px;
+  padding-top: 11px;
+  border-top: 1px solid #D1E2EC;
+}
+
+/* QUESTIONS */
+
+.questions {
+  display: grid;
+  gap: 12px;
+  margin-top: 19px;
+}
+
+.question {
+  display: flex;
+  gap: 13px;
+  align-items: flex-start;
+  background: var(--light-blue);
+  border-radius: 10px;
+  padding: 15px 17px;
+}
+
+.question-icon {
+  background: var(--navy);
+  color: white;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.question p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* TIMELINE */
+
+.timeline {
+  display: grid;
+  gap: 13px;
+  margin-top: 20px;
+}
+
+.timeline-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 18px;
+  background: var(--light-blue);
+  border-radius: 11px;
+}
+
+.step-number {
+  background: var(--navy);
+  color: white;
+  width: 39px;
+  height: 39px;
+  min-width: 39px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  border-bottom: 3px solid var(--green);
+}
+
+.timeline-step h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.timeline-step p {
+  font-size: 14px;
+  margin: 0;
+}
+
+/* LIVE EVENT */
+
+.event-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.event-half {
+  background: var(--light-blue);
+  border-top: 4px solid var(--green);
+  border-radius: 11px;
+  padding: 21px;
+}
+
+.event-half h3 {
+  margin-bottom: 9px;
+}
+
+.event-half p {
+  font-size: 14px;
+}
+
+.event-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .7px;
+  text-transform: uppercase;
+  color: var(--blue);
+  margin-bottom: 8px;
+}
+
+/* TAKEAWAY */
+
+.takeaway {
+  background: #F5FAEE;
+  border-left: 4px solid var(--green);
+  padding: 18px 22px;
+  border-radius: 0 10px 10px 0;
+  margin-top: 20px;
+  font-size: 15px;
+}
+
+.closing {
+  background: var(--navy);
+  border-bottom: 5px solid var(--green);
+  border-radius: 14px;
+  padding: 26px 30px;
+  color: white;
+  text-align: center;
+}
+
+.closing h2 {
+  color: white;
+  margin-bottom: 9px;
+}
+
+.closing p {
+  font-size: 16px;
+  max-width: 750px;
+  margin: 0 auto;
+}
+
+.footer {
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 28px;
+}
+
+@media(max-width:650px) {
+  .container {
+    padding: 15px 12px 35px;
+  }
+
+  .hero {
+    padding: 29px 22px;
+  }
+
+  .card {
+    padding: 23px 20px;
+  }
+
+  .event-layout {
+    grid-template-columns: 1fr;
+  }
+
+  h2 {
+    font-size: 21px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+<!-- HEADER -->
+
+<header class="hero">
+
+  <div class="eyebrow">
+    Intermediate Development | Building Better Study Plans
+  </div>
+
+  <h1>Recognizing the Need</h1>
+
+  <p>
+    Understanding when students may benefit from
+    developing a structured study plan and how
+    to introduce planning through intentional
+    coaching conversations.
+  </p>
+
+</header>
+
+
+<!-- SECTION 1 -->
+
+<section class="card">
+
+  <h2>What Is a Study Plan?</h2>
+
+  <p>
+    A study plan is a personalized roadmap that
+    helps students organize their course material,
+    establish learning goals, and identify the
+    time, strategies, and resources they will
+    use to make progress.
+  </p>
+
+  <p>
+    Rather than approaching a course one topic
+    at a time without a clear direction, a
+    study plan helps students see the bigger
+    picture and make intentional decisions
+    about their learning.
+  </p>
+
+  <div class="definition">
+    <strong>A strong study plan answers:</strong>
+    What do I need to learn? When will I work
+    on it? How will I approach it? What support
+    might I need along the way?
+  </div>
+
+  <p>
+    Study plans can help students feel less
+    overwhelmed, establish realistic expectations,
+    prioritize their learning, and recognize
+    progress toward their course goals.
+  </p>
+
+  <p>
+    Importantly, <strong>the student should
+    maintain ownership of the plan.</strong>
+    A Peer Navigator's role is to help the
+    student explore possibilities, organize
+    their thinking, and make informed decisions,
+    rather than creating a schedule for them.
+  </p>
+
+</section>
+
+
+<!-- SECTION 2 -->
+
+<section class="card">
+
+  <h2>When Might a Student Need a Study Plan?</h2>
+
+  <p>
+    Sometimes students schedule a coaching
+    appointment without knowing exactly
+    what type of support would be most helpful.
+    They may ask to practice a study strategy
+    simply because that is what they associate
+    with peer coaching.
+  </p>
+
+  <p>
+    However, before jumping into a random
+    learning strategy, it may be more valuable
+    to explore whether the student needs
+    a structured plan for approaching
+    the course as a whole.
+  </p>
+
+  <div class="scenarios">
+
+    <div class="scenario">
+      <div class="scenario-header">
+        1. Starting a New Course
+      </div>
+
+      <div class="scenario-content">
+
+        <p class="student-quote">
+          "I just opened this course, and I'm
+          not really sure where to start."
+        </p>
+
+        <p>
+          Students beginning a new course may
+          benefit from exploring its structure,
+          identifying major topics, reviewing
+          available resources, and deciding
+          how to organize their study time.
+        </p>
+
+        <p class="why">
+          <strong>Planning opportunity:</strong>
+          Build a roadmap before diving into
+          individual learning strategies.
+        </p>
+
+      </div>
+    </div>
+
+
+    <div class="scenario">
+      <div class="scenario-header">
+        2. Preparing for a Pre-Assessment
+        or First OA Attempt
+      </div>
+
+      <div class="scenario-content">
+
+        <p class="student-quote">
+          "I'm getting ready for my assessment,
+          but I don't know how to organize
+          everything I still need to study."
+        </p>
+
+        <p>
+          A study plan can help students
+          organize review activities, consider
+          areas where they feel less confident,
+          and identify resources that may
+          support their preparation.
+        </p>
+
+        <p class="why">
+          <strong>Planning opportunity:</strong>
+          Develop a structured approach to
+          assessment preparation rather than
+          studying topics without clear priorities.
+        </p>
+
+      </div>
+    </div>
+
+
+    <div class="scenario">
+      <div class="scenario-header">
+        3. Preparing for an Assessment Retake
+      </div>
+
+      <div class="scenario-content">
+
+        <p class="student-quote">
+          "I didn't pass my assessment,
+          and now I feel like I need to
+          start all over."
+        </p>
+
+        <p>
+          Students preparing for a retake
+          may feel discouraged or unsure
+          how to approach their next attempt.
+          A study plan can help them organize
+          their preparation, identify areas
+          requiring additional attention,
+          and incorporate Course Instructor
+          support and approved resources.
+        </p>
+
+        <p class="why">
+          <strong>Planning opportunity:</strong>
+          Help the student translate their
+          next steps and academic guidance
+          into an actionable preparation plan.
+        </p>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="takeaway">
+    <strong>Remember:</strong>
+    These situations are indicators that
+    study planning may be useful, not
+    automatic reasons to create a plan.
+    Use coaching questions to explore
+    what the student needs before deciding
+    together how to use the appointment.
+  </div>
+
+</section>
+
+
+<!-- SECTION 3 -->
+
+<section class="card">
+
+  <h2>Explore Before Suggesting</h2>
+
+  <p>
+    The Peer Navigator should not assume
+    that a study plan is needed based solely
+    on where the student is in their course.
+    Instead, begin by exploring the student's
+    current experience, goals, and challenges.
+  </p>
+
+  <p>
+    Powerful questions can help students
+    recognize whether they would benefit
+    from taking a broader look at their
+    course before focusing on a specific
+    learning strategy.
+  </p>
+
+  <div class="questions">
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "What does your current approach
+        to studying this course look like?"
+      </p>
+    </div>
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "How have you been deciding
+        which topics to focus on?"
+      </p>
+    </div>
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "What are you hoping to accomplish
+        before your next assessment?"
+      </p>
+    </div>
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "What has been working well
+        with your current study routine,
+        and what hasn't?"
+      </p>
+    </div>
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "How confident do you feel about
+        knowing what to focus on next?"
+      </p>
+    </div>
+
+    <div class="question">
+      <div class="question-icon">?</div>
+      <p>
+        "What would be most helpful
+        for us to work on together today?"
+      </p>
+    </div>
+
+  </div>
+
+  <p style="margin-top:20px;">
+    If the conversation reveals that a
+    student would benefit from more structure,
+    the Peer Navigator might introduce
+    study planning as an option:
+  </p>
+
+  <div class="definition">
+    "It sounds like you're trying to figure
+    out how to approach the course as a whole.
+    One option we could explore is building
+    a study plan together. How does that
+    sound to you?"
+  </div>
+
+  <p>
+    This approach introduces a potential
+    strategy while keeping the decision
+    collaborative and student-centered.
+  </p>
+
+</section>
+
+
+<!-- SECTION 4 -->
+
+<section class="card">
+
+  <h2>Study Planning Can Be the Entire Appointment</h2>
+
+  <p>
+    When a student is new to a course or
+    unsure how to organize their learning,
+    creating a study plan can be a meaningful
+    first coaching appointment.
+  </p>
+
+  <p>
+    <strong>There is no need to rush into
+    demonstrating a study strategy during
+    the first session.</strong>
+    Helping a student build a clear
+    direction for their learning is
+    valuable coaching in itself.
+  </p>
+
+  <p>
+    In fact, study planning can create
+    opportunities for more intentional
+    coaching in future appointments.
+  </p>
+
+  <div class="timeline">
+
+    <div class="timeline-step">
+
+      <div class="step-number">1</div>
+
+      <div>
+        <h3>Initial Appointment: Build the Roadmap</h3>
+        <p>
+          Explore the student's goals, review
+          course topics, identify available
+          resources, and collaboratively
+          create a realistic study plan.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="timeline-step">
+
+      <div class="step-number">2</div>
+
+      <div>
+        <h3>Follow-Up Appointments: Practice Strategies</h3>
+        <p>
+          Schedule follow-up appointments
+          to practice learning strategies
+          that align with the topics the
+          student is currently studying.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="timeline-step">
+
+      <div class="step-number">3</div>
+
+      <div>
+        <h3>Ongoing Coaching: Reflect and Adjust</h3>
+        <p>
+          Use future appointments to
+          recognize progress, explore
+          challenges, strengthen accountability,
+          and adjust the study plan
+          when needed.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="takeaway">
+    <strong>Think of it this way:</strong>
+    The initial study plan creates the
+    direction. Future appointments provide
+    opportunities to practice the strategies,
+    reflect on progress, and continue
+    building independent learning skills.
+  </div>
+
+</section>
+
+
+<!-- SECTION 5 -->
+
+<section class="card">
+
+  <h2>What About Live Events?</h2>
+
+  <p>
+    In a live event, identifying whether
+    individual students need a study plan
+    is less central because the Peer Navigator
+    has already developed the session plan
+    before students arrive.
+  </p>
+
+  <p>
+    However, <strong>powerful questions
+    are still essential.</strong>
+    Live event facilitators can encourage
+    students to reflect on their existing
+    knowledge, course goals, and learning
+    priorities while introducing tools
+    they can continue using independently.
+  </p>
+
+  <h3>Example: Course Planning Live Event</h3>
+
+  <p>
+    A course overview or getting-started
+    live event could introduce two
+    complementary planning tools:
+  </p>
+
+  <div class="event-layout">
+
+    <div class="event-half">
+
+      <div class="event-label">
+        First Half
+      </div>
+
+      <h3>Explore Existing Knowledge with KWL</h3>
+
+      <p>
+        Introduce the KWL chart and guide
+        students in reflecting on what
+        they already know, what they
+        want to learn, and which course
+        topics may need more attention.
+      </p>
+
+      <p>
+        The next page in this learning
+        path will explore the KWL
+        strategy in greater detail.
+      </p>
+
+    </div>
+
+
+    <div class="event-half">
+
+      <div class="event-label">
+        Second Half
+      </div>
+
+      <h3>Introduce the Study Plan Template</h3>
+
+      <p>
+        Walk students through the study
+        plan template, demonstrate how
+        to organize course topics into
+        manageable goals, and encourage
+        them to consider their available
+        time and learning resources.
+      </p>
+
+      <p>
+        Students can begin their plans
+        during the event and continue
+        personalizing them afterward.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="takeaway">
+    <strong>The goal is introduction,
+    not completion.</strong>
+    Students do not need to finish their
+    entire KWL chart or study plan during
+    the live event. The purpose is to
+    introduce the tools, help students
+    understand how to use them, and
+    encourage independent application
+    after the session.
+  </div>
+
+  <p style="margin-top:20px;">
+    Because students participating in
+    a live event may have different
+    experiences, goals, and schedules,
+    the facilitator should avoid
+    prescribing one study plan
+    for everyone.
+  </p>
+
+  <p>
+    Instead, invite students to
+    reflect on how the tools might
+    work for their individual
+    circumstances and encourage
+    them to make decisions that
+    support their own learning.
+  </p>
+
+</section>
+
+
+<!-- CLOSING -->
+
+<section class="closing">
+
+  <h2>Collaborative Planning Is Coaching</h2>
+
+  <p>
+    Helping students develop a clear
+    direction for their learning can
+    be just as valuable as practicing
+    an individual study strategy.
+    By recognizing when planning
+    would be useful and exploring
+    the student's needs first,
+    Peer Navigators can create
+    more intentional, personalized,
+    and empowering coaching experiences.
+  </p>
+
+</section>
+
+
+<footer class="footer">
+  Peer Intern Development Program |
+  Intermediate Level |
+  Building Better Study Plans
+</footer>
+
+</main>
+</body>
+</html>
