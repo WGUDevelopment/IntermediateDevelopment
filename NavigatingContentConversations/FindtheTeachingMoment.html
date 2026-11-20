@@ -1,0 +1,1444 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Find the Teaching Moment</title>
+
+<style>
+:root {
+  --navy-dark:#001731;
+  --navy:#002855;
+  --blue:#0070F0;
+  --sky:#46B1EF;
+  --green:#97E142;
+  --light:#EEF6F9;
+  --white:#FFFFFF;
+  --border:#D9E4EB;
+  --text:#001731;
+  --muted:#536477;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin:0;
+  padding:20px;
+  background:var(--light);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  line-height:1.55;
+}
+
+.activity {
+  max-width:1100px;
+  margin:0 auto;
+  background:white;
+  border-radius:16px;
+  overflow:hidden;
+  border:1px solid var(--border);
+  box-shadow:0 10px 32px rgba(0,23,49,.12);
+}
+
+/* TOP HEADER */
+
+.activity-header {
+  background:linear-gradient(
+    120deg,
+    var(--navy-dark),
+    var(--navy)
+  );
+  color:white;
+  padding:22px 28px 18px;
+  border-bottom:5px solid var(--green);
+}
+
+.eyebrow {
+  font-size:11px;
+  letter-spacing:1.2px;
+  color:var(--green);
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+.activity-header h1 {
+  font-size:clamp(24px,3.5vw,32px);
+  line-height:1.2;
+  margin:7px 0;
+}
+
+.activity-header p {
+  margin:0;
+  color:#DCE8F4;
+  font-size:14px;
+}
+
+.progress-row {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:center;
+  margin-top:18px;
+  font-size:12px;
+  color:#DCE8F4;
+}
+
+.progress-track {
+  background:#35516D;
+  height:6px;
+  border-radius:10px;
+  margin-top:8px;
+  overflow:hidden;
+}
+
+.progress-fill {
+  height:100%;
+  width:0%;
+  background:var(--green);
+  border-radius:10px;
+  transition:width .3s ease;
+}
+
+/* SLIDE AREA */
+
+.slide {
+  padding:30px;
+  min-height:490px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.slide-inner {
+  width:100%;
+  max-width:940px;
+  margin:0 auto;
+}
+
+.slide-tag {
+  display:inline-block;
+  background:var(--light);
+  color:var(--navy);
+  border-radius:20px;
+  padding:5px 13px;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:1px;
+  text-transform:uppercase;
+  margin-bottom:13px;
+}
+
+.slide h2 {
+  color:var(--navy);
+  font-size:clamp(22px,3vw,27px);
+  line-height:1.3;
+  margin:0 0 12px;
+}
+
+.slide p {
+  margin:0 0 15px;
+}
+
+.helper-text {
+  color:var(--muted);
+  font-size:14px;
+}
+
+/* WELCOME */
+
+.welcome {
+  text-align:center;
+  max-width:700px;
+  margin:auto;
+}
+
+.welcome-icon {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--light);
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  font-size:32px;
+  margin:0 auto 19px;
+}
+
+.name-field {
+  max-width:450px;
+  margin:25px auto 0;
+  text-align:left;
+}
+
+label {
+  display:block;
+  font-weight:700;
+  color:var(--navy);
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+input, textarea {
+  width:100%;
+  border:1.5px solid #C7D4E0;
+  border-radius:9px;
+  font-family:Arial,Helvetica,sans-serif;
+  font-size:16px;
+  color:var(--text);
+  background:white;
+}
+
+input {
+  padding:13px 15px;
+}
+
+textarea {
+  padding:15px;
+  resize:vertical;
+  min-height:175px;
+  line-height:1.6;
+}
+
+input:focus, textarea:focus {
+  outline:3px solid rgba(0,112,240,.16);
+  border-color:var(--blue);
+}
+
+textarea:disabled {
+  background:#F1F4F7;
+  color:#35475A;
+}
+
+.field-note {
+  font-size:12px;
+  color:var(--muted);
+  margin-top:8px;
+}
+
+/* VIDEO SLIDES */
+
+.video-layout {
+  max-width:880px;
+  margin:auto;
+}
+
+.video-shell {
+  background:var(--navy-dark);
+  border-radius:12px;
+  overflow:hidden;
+  aspect-ratio:16/9;
+  width:100%;
+  box-shadow:0 5px 18px rgba(0,23,49,.15);
+}
+
+.video-shell iframe {
+  display:block;
+  width:100%;
+  height:100%;
+  border:0;
+}
+
+.video-link {
+  display:inline-block;
+  color:var(--blue);
+  font-size:13px;
+  margin-top:10px;
+  font-weight:700;
+}
+
+.video-instruction {
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  margin-top:12px;
+}
+
+/* RESPONSE SLIDES */
+
+.response-layout {
+  max-width:800px;
+  margin:auto;
+}
+
+.prompt-card {
+  background:var(--light);
+  border-left:5px solid var(--sky);
+  padding:19px 22px;
+  border-radius:0 11px 11px 0;
+  margin:20px 0;
+}
+
+.prompt-card strong {
+  display:block;
+  color:var(--navy);
+  font-size:17px;
+  line-height:1.5;
+}
+
+.response-note {
+  margin-top:12px;
+  font-size:13px;
+  color:var(--muted);
+}
+
+.lock-notice {
+  background:#F5FAEE;
+  border-left:4px solid var(--green);
+  padding:12px 16px;
+  border-radius:0 8px 8px 0;
+  margin-top:12px;
+  font-size:13px;
+  color:var(--navy);
+}
+
+/* COMPLETION */
+
+.complete {
+  text-align:center;
+  max-width:750px;
+  margin:auto;
+}
+
+.complete-icon {
+  background:var(--green);
+  color:var(--navy);
+  width:70px;
+  height:70px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:34px;
+  font-weight:700;
+  margin:0 auto 20px;
+}
+
+.complete-box {
+  background:var(--light);
+  border:1px solid var(--border);
+  border-radius:12px;
+  padding:22px;
+  margin:24px 0;
+  text-align:left;
+}
+
+.complete-box h3 {
+  margin:0 0 12px;
+  color:var(--navy);
+}
+
+.complete-box p {
+  font-size:14px;
+  margin-bottom:8px;
+}
+
+.download-btn {
+  background:var(--navy);
+  color:white;
+  border:0;
+  border-bottom:4px solid var(--green);
+  border-radius:10px;
+  padding:16px 26px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:700;
+  font-family:inherit;
+}
+
+.download-btn:hover {
+  background:#003E78;
+}
+
+/* PLAYER NAVIGATION */
+
+.navigation {
+  background:#F8FAFC;
+  border-top:1px solid var(--border);
+  padding:17px 26px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.nav-btn {
+  border:0;
+  padding:12px 22px;
+  border-radius:9px;
+  font-family:inherit;
+  font-size:14px;
+  font-weight:700;
+  cursor:pointer;
+  transition:background .15s;
+}
+
+.back-btn {
+  background:#E5EBF1;
+  color:var(--navy);
+}
+
+.back-btn:hover:not(:disabled) {
+  background:#D3DFE9;
+}
+
+.next-btn {
+  background:var(--blue);
+  color:white;
+}
+
+.next-btn:hover:not(:disabled) {
+  background:#005AC2;
+}
+
+.nav-btn:disabled {
+  opacity:.4;
+  cursor:not-allowed;
+}
+
+.nav-center {
+  font-size:12px;
+  text-align:center;
+  color:var(--muted);
+}
+
+.footer {
+  text-align:center;
+  padding:13px;
+  color:var(--muted);
+  font-size:11px;
+  background:white;
+}
+
+@media(max-width:650px) {
+  body {
+    padding:8px;
+  }
+
+  .activity-header {
+    padding:20px;
+  }
+
+  .slide {
+    padding:22px 16px;
+    min-height:410px;
+  }
+
+  .navigation {
+    padding:14px;
+  }
+
+  .nav-btn {
+    padding:11px 15px;
+    font-size:12px;
+  }
+
+  .nav-center {
+    font-size:10px;
+  }
+
+  textarea {
+    min-height:200px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="activity">
+
+  <header class="activity-header">
+    <div class="eyebrow">
+      Intermediate Development |
+      Navigating Content Conversations
+    </div>
+
+    <h1>Find the Teaching Moment</h1>
+
+    <p>
+      Interactive Video Reflection Activity
+    </p>
+
+    <div class="progress-row">
+      <span id="progressLabel">
+        Getting Started
+      </span>
+
+      <span id="progressNumber">
+        0%
+      </span>
+    </div>
+
+    <div class="progress-track"
+         role="progressbar"
+         aria-label="Activity progress"
+         aria-valuemin="0"
+         aria-valuemax="100"
+         aria-valuenow="0"
+         id="progressTrack">
+
+      <div class="progress-fill"
+           id="progressFill"></div>
+    </div>
+  </header>
+
+
+  <section class="slide"
+           id="slide"
+           aria-live="polite">
+  </section>
+
+
+  <nav class="navigation"
+       aria-label="Activity navigation">
+
+    <button
+      type="button"
+      class="nav-btn back-btn"
+      id="backBtn">
+      ← Back
+    </button>
+
+    <div class="nav-center"
+         id="navCenter">
+      Welcome
+    </div>
+
+    <button
+      type="button"
+      class="nav-btn next-btn"
+      id="nextBtn">
+      Get Started →
+    </button>
+
+  </nav>
+
+  <footer class="footer">
+    Peer Intern Development Program |
+    Intermediate Level |
+    Navigating Content Conversations
+  </footer>
+
+</main>
+
+<script>
+
+/* ===========================================
+   SCENARIO INFORMATION
+=========================================== */
+
+const scenarios = [
+
+  {
+    title:"Using 'I can't' Language",
+
+    description:
+      "The peer navigator told the student they could not teach course content and immediately referred out to a course instructor.",
+
+    scenarioVideo:
+      "41df5e48-ace1-423d-8ab7-b50800f31ac4",
+
+    explanationVideo:
+      "9c7992d6-1ad7-4e38-afe4-b50800f3505d"
+  },
+
+  {
+    title:"Using 'You should' Language",
+
+    description:
+      "The peer navigator immediately began going into advice mode, telling the student what they should do next, instead of exploring possible options.",
+
+    scenarioVideo:
+      "2c08be6e-7027-432d-b9e5-b50800f2f4f5",
+
+    explanationVideo:
+      "028480d5-67b2-4c94-aaa8-b50800f388d3"
+  },
+
+  {
+    title:"Confirming Accuracy",
+
+    description:
+      "The peer navigator moved into the teaching lane by confirming accuracy when the student asked for confirmation on a content question.",
+
+    scenarioVideo:
+      "5a755ad9-99cb-4708-8efe-b50800f2b381",
+
+    explanationVideo:
+      "f49628b3-0ccf-497b-b831-b50800f2b3ef"
+  },
+
+  {
+    title:"Quizzing",
+
+    description:
+      "The peer navigator quizzes the student on their content knowledge to help them figure out if they are ready for their test.",
+
+    scenarioVideo:
+      "272fd472-bb64-427c-87a7-b50800f2b43e",
+
+    explanationVideo:
+      "3f9529ba-fa21-447f-a7a1-b50800f2b34e"
+  }
+
+];
+
+
+/* ===========================================
+   ACTIVITY STATE
+=========================================== */
+
+let currentSlide = 0;
+
+let internName = "";
+
+let responses = ["", "", "", ""];
+
+let submitted = [false, false, false, false];
+
+let completedAt = null;
+
+/*
+  Slide order:
+
+  0 = Welcome
+
+  1 = Scenario 1 video
+  2 = Response 1
+  3 = Explanation 1
+
+  4 = Scenario 2 video
+  5 = Response 2
+  6 = Explanation 2
+
+  7 = Scenario 3 video
+  8 = Response 3
+  9 = Explanation 3
+
+  10 = Scenario 4 video
+  11 = Response 4
+  12 = Explanation 4
+
+  13 = Completion / Download
+*/
+
+const TOTAL_SLIDES = 14;
+
+
+/* ===========================================
+   HTML SAFETY
+=========================================== */
+
+function escapeHTML(value) {
+  return String(value).replace(
+    /[&<>"']/g,
+    char => ({
+      "&":"&amp;",
+      "<":"&lt;",
+      ">":"&gt;",
+      '"':"&quot;",
+      "'":"&#39;"
+    })[char]
+  );
+}
+
+
+/* ===========================================
+   PANOPTO EMBED
+=========================================== */
+
+function videoEmbed(id, title) {
+
+  const src =
+    "https://wgu.hosted.panopto.com" +
+    "/Panopto/Pages/Embed.aspx?id=" +
+    encodeURIComponent(id) +
+    "&autoplay=false" +
+    "&offerviewer=true" +
+    "&showtitle=false" +
+    "&showbrand=false" +
+    "&interactivity=all";
+
+  return `
+    <div class="video-shell">
+      <iframe
+        src="${src}"
+        title="${escapeHTML(title)}"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowfullscreen
+        loading="eager">
+      </iframe>
+    </div>
+
+    <a class="video-link"
+       href="https://wgu.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=${encodeURIComponent(id)}"
+       target="_blank"
+       rel="noopener noreferrer">
+       Open video in Panopto if needed
+    </a>
+  `;
+}
+
+
+/* ===========================================
+   SLIDE RENDERING
+=========================================== */
+
+function renderSlide() {
+
+  const slide = document.getElementById("slide");
+
+  const backBtn = document.getElementById("backBtn");
+
+  const nextBtn = document.getElementById("nextBtn");
+
+  const navCenter = document.getElementById("navCenter");
+
+  backBtn.disabled = currentSlide === 0;
+
+  nextBtn.style.display = "inline-block";
+
+  /* WELCOME SLIDE */
+
+  if(currentSlide === 0) {
+
+    slide.innerHTML = `
+      <div class="slide-inner welcome">
+
+        <div class="welcome-icon"
+             aria-hidden="true">▶</div>
+
+        <div class="slide-tag">
+          Interactive Learning Activity
+        </div>
+
+        <h2>
+          Find the Teaching Moment
+        </h2>
+
+        <p>
+          You'll watch four coaching interactions
+          where a Peer Navigator unintentionally
+          moves into teaching.
+        </p>
+
+        <p>
+          After each video, identify the mistake
+          and explain what the Peer Navigator
+          could have said or done differently.
+        </p>
+
+        <p>
+          You'll then watch a short explanation
+          before moving to the next scenario.
+        </p>
+
+        <div class="name-field">
+
+          <label for="internName">
+            Enter Your Full Name
+          </label>
+
+          <input
+            id="internName"
+            type="text"
+            maxlength="120"
+            placeholder="First and Last Name"
+            value="${escapeHTML(internName)}"
+            autocomplete="name">
+
+          <div class="field-note">
+            Your name will appear on your
+            downloadable reflection report.
+          </div>
+
+        </div>
+
+      </div>
+    `;
+
+    nextBtn.textContent = "Begin Activity →";
+
+    navCenter.textContent = "Welcome";
+
+    document.getElementById("internName")
+      .addEventListener("input", e => {
+        internName = e.target.value;
+      });
+
+    updateProgress();
+
+    return;
+  }
+
+
+  /* COMPLETION SLIDE */
+
+  if(currentSlide === 13) {
+
+    if(!completedAt) {
+      completedAt = new Date();
+    }
+
+    slide.innerHTML = `
+      <div class="slide-inner complete">
+
+        <div class="complete-icon"
+             aria-hidden="true">✓</div>
+
+        <div class="slide-tag">
+          Activity Complete
+        </div>
+
+        <h2>
+          You've Completed All Four Scenarios!
+        </h2>
+
+        <p>
+          You've identified teaching moments
+          and practiced developing more
+          effective coaching responses.
+        </p>
+
+        <div class="complete-box">
+
+          <h3>
+            Your Reflection Report Is Ready
+          </h3>
+
+          <p>
+            <strong>Intern:</strong>
+            ${escapeHTML(internName)}
+          </p>
+
+          <p>
+            <strong>Responses:</strong>
+            4 of 4 submitted
+          </p>
+
+          <p>
+            Your report includes each scenario's
+            title, description, and your original
+            written response.
+          </p>
+
+        </div>
+
+        <button
+          type="button"
+          class="download-btn"
+          id="downloadReport">
+
+          ↓ Download My Reflection Report
+
+        </button>
+
+        <p class="helper-text"
+           style="margin-top:18px;">
+
+          Download the document and upload it
+          to the Canvas assignment on the
+          following page.
+
+        </p>
+
+      </div>
+    `;
+
+    document.getElementById("downloadReport")
+      .addEventListener("click", downloadReport);
+
+    nextBtn.style.display = "none";
+
+    navCenter.textContent = "Activity Complete";
+
+    updateProgress();
+
+    return;
+  }
+
+
+  /* DETERMINE SCENARIO AND SLIDE TYPE */
+
+  const position = currentSlide - 1;
+
+  const scenarioIndex = Math.floor(position / 3);
+
+  const slideType = position % 3;
+
+  const scenario = scenarios[scenarioIndex];
+
+  const number = scenarioIndex + 1;
+
+
+  /* SCENARIO VIDEO */
+
+  if(slideType === 0) {
+
+    slide.innerHTML = `
+      <div class="slide-inner video-layout">
+
+        <div class="slide-tag">
+          Scenario ${number} of 4
+        </div>
+
+        <h2>
+          Watch the Interaction
+        </h2>
+
+        <p class="helper-text">
+          Pay attention to the Peer Navigator's
+          language and actions. Where might
+          they be stepping into teaching?
+        </p>
+
+        ${videoEmbed(
+          scenario.scenarioVideo,
+          "Scenario " + number
+        )}
+
+        <p class="video-instruction">
+          Watch the entire clip, then select
+          Continue to record your response.
+        </p>
+
+      </div>
+    `;
+
+    nextBtn.textContent = "Continue →";
+
+    navCenter.textContent =
+      "Scenario " + number + " — Video";
+
+  }
+
+
+  /* WRITTEN RESPONSE */
+
+  else if(slideType === 1) {
+
+    const isLocked = submitted[scenarioIndex];
+
+    slide.innerHTML = `
+      <div class="slide-inner response-layout">
+
+        <div class="slide-tag">
+          Scenario ${number} of 4 |
+          Written Reflection
+        </div>
+
+        <h2>
+          Identify the Teaching Moment
+        </h2>
+
+        <div class="prompt-card">
+          <strong>
+            Explain the error in the previous
+            interaction and provide an
+            alternative response.
+          </strong>
+        </div>
+
+        <label for="responseText">
+          Your Written Response
+        </label>
+
+        <textarea
+          id="responseText"
+          placeholder="Explain what the Peer Navigator did incorrectly and describe what they could have said or done differently."
+          ${isLocked ? "disabled" : ""}
+        >${escapeHTML(responses[scenarioIndex])}</textarea>
+
+        ${
+          isLocked
+          ? `
+            <div class="lock-notice">
+              ✓ Response submitted.
+              Your original answer is locked
+              so it cannot be changed after
+              viewing the explanation.
+            </div>
+          `
+          : `
+            <p class="response-note">
+              Your response must identify
+              the error and provide an
+              alternative coaching approach.
+              Once submitted, your response
+              will be locked.
+            </p>
+          `
+        }
+
+      </div>
+    `;
+
+    if(!isLocked) {
+      document.getElementById("responseText")
+        .addEventListener("input", e => {
+          responses[scenarioIndex] = e.target.value;
+        });
+    }
+
+    nextBtn.textContent = isLocked
+      ? "Continue →"
+      : "Submit Response →";
+
+    navCenter.textContent =
+      "Scenario " + number + " — Reflection";
+
+  }
+
+
+  /* EXPLANATION VIDEO */
+
+  else {
+
+    slide.innerHTML = `
+      <div class="slide-inner video-layout">
+
+        <div class="slide-tag">
+          Scenario ${number} of 4 |
+          Explanation
+        </div>
+
+        <h2>
+          Let's Review
+        </h2>
+
+        <p class="helper-text">
+          Watch the explanation and compare
+          the suggested coaching approach
+          with your original response.
+        </p>
+
+        ${videoEmbed(
+          scenario.explanationVideo,
+          "Explanation " + number
+        )}
+
+        <p class="video-instruction">
+          Watch the explanation, then continue
+          ${number === 4
+            ? "to your reflection report."
+            : "to the next scenario."}
+        </p>
+
+      </div>
+    `;
+
+    nextBtn.textContent = number === 4
+      ? "Finish Activity →"
+      : "Next Scenario →";
+
+    navCenter.textContent =
+      "Scenario " + number + " — Explanation";
+
+  }
+
+  updateProgress();
+
+}
+
+
+/* ===========================================
+   PROGRESS
+=========================================== */
+
+function updateProgress() {
+
+  const percentage = Math.round(
+    currentSlide / (TOTAL_SLIDES - 1) * 100
+  );
+
+  document.getElementById("progressFill")
+    .style.width = percentage + "%";
+
+  document.getElementById("progressNumber")
+    .textContent = percentage + "%";
+
+  document.getElementById("progressTrack")
+    .setAttribute(
+      "aria-valuenow",
+      percentage
+    );
+
+  const label = document.getElementById("progressLabel");
+
+  if(currentSlide === 0) {
+    label.textContent = "Getting Started";
+  }
+  else if(currentSlide === 13) {
+    label.textContent = "Completed";
+  }
+  else {
+    const number = Math.floor(
+      (currentSlide - 1) / 3
+    ) + 1;
+
+    label.textContent =
+      "Scenario " + number + " of 4";
+  }
+
+}
+
+
+/* ===========================================
+   NEXT BUTTON
+=========================================== */
+
+document.getElementById("nextBtn")
+  .addEventListener("click", () => {
+
+    /* VALIDATE NAME */
+
+    if(currentSlide === 0) {
+
+      if(!internName.trim()) {
+        alert("Please enter your full name.");
+        document.getElementById("internName").focus();
+        return;
+      }
+
+      internName = internName.trim();
+    }
+
+
+    /* VALIDATE WRITTEN RESPONSE */
+
+    if(currentSlide >= 1 && currentSlide <= 12) {
+
+      const position = currentSlide - 1;
+
+      const scenarioIndex = Math.floor(position / 3);
+
+      const slideType = position % 3;
+
+      if(slideType === 1) {
+
+        if(!submitted[scenarioIndex]) {
+
+          const answer = responses[scenarioIndex].trim();
+
+          if(!answer) {
+            alert(
+              "Please enter your written reflection " +
+              "before viewing the explanation."
+            );
+
+            document.getElementById("responseText").focus();
+            return;
+          }
+
+          responses[scenarioIndex] = answer;
+
+          submitted[scenarioIndex] = true;
+
+        }
+      }
+    }
+
+
+    /* ADVANCE */
+
+    if(currentSlide < TOTAL_SLIDES - 1) {
+      currentSlide++;
+      renderSlide();
+    }
+
+  });
+
+
+/* ===========================================
+   BACK BUTTON
+=========================================== */
+
+document.getElementById("backBtn")
+  .addEventListener("click", () => {
+
+    if(currentSlide > 0) {
+      currentSlide--;
+      renderSlide();
+    }
+
+  });
+
+
+/* ===========================================
+   WORD-COMPATIBLE REPORT GENERATION
+=========================================== */
+
+/*
+  Generates a genuine RTF document that
+  Microsoft Word can open and edit.
+
+  No external libraries are needed.
+*/
+
+/* Escape text safely for RTF */
+
+function rtfEscape(value) {
+
+  let result = "";
+
+  for(const char of String(value)) {
+
+    const cp = char.codePointAt(0);
+
+    if(char === "\\") {
+      result += "\\\\";
+    }
+
+    else if(char === "{") {
+      result += "\\{";
+    }
+
+    else if(char === "}") {
+      result += "\\}";
+    }
+
+    else if(char === "\n") {
+      result += "\\par ";
+    }
+
+    else if(char === "\r") {
+      continue;
+    }
+
+    else if(char === "\t") {
+      result += "\\tab ";
+    }
+
+    else if(cp >= 32 && cp <= 126) {
+      result += char;
+    }
+
+    else if(cp < 32) {
+      continue;
+    }
+
+    else {
+      const units = cp <= 0xFFFF
+        ? [cp]
+        : [
+            0xD800 + ((cp - 0x10000) >> 10),
+            0xDC00 + ((cp - 0x10000) & 0x3FF)
+          ];
+
+      for(const unit of units) {
+        const signed = unit > 32767
+          ? unit - 65536
+          : unit;
+
+        result += "\\u" + signed + "?";
+      }
+    }
+
+  }
+
+  return result;
+}
+
+
+/* Download report */
+
+function downloadReport() {
+
+  if(
+    !internName.trim() ||
+    !submitted.every(Boolean)
+  ) {
+    alert(
+      "Complete all four responses before " +
+      "downloading your report."
+    );
+    return;
+  }
+
+  const date = completedAt || new Date();
+
+  const formattedDate = date.toLocaleDateString(
+    "en-US",
+    {
+      year:"numeric",
+      month:"long",
+      day:"numeric"
+    }
+  );
+
+  /*
+    RTF formatting:
+    fs = font size in half-points
+    b  = bold
+    par = paragraph
+    sb/sa = spacing
+  */
+
+  let rtf = "";
+
+  rtf += "{\\rtf1\\ansi\\deff0\\uc1";
+
+  rtf += "{\\fonttbl";
+  rtf += "{\\f0 Arial;}";
+  rtf += "}";
+
+  rtf += "{\\colortbl;";
+  rtf += "\\red0\\green40\\blue85;";
+  rtf += "\\red83\\green100\\blue119;";
+  rtf += "}";
+
+  rtf += "\\paperw12240\\paperh15840";
+  rtf += "\\margl1080\\margr1080";
+  rtf += "\\margt1080\\margb1080";
+
+  rtf += "\\widowctrl";
+  rtf += "\\f0\\fs22";
+
+  /* Document title */
+
+  rtf += "\\pard\\qc\\cf1\\b\\fs32";
+  rtf += "Find the Teaching Moment";
+  rtf += "\\b0\\par";
+
+  rtf += "\\pard\\qc\\cf2\\fs20";
+  rtf += "Navigating Content Conversations";
+  rtf += "\\par";
+
+  rtf += "\\pard\\qc\\fs18";
+  rtf += "Intermediate Development";
+  rtf += "\\par\\par";
+
+  /* Intern information */
+
+  rtf += "\\pard\\ql\\cf1\\fs22";
+
+  rtf += "\\b Intern: \\b0";
+  rtf += rtfEscape(internName);
+  rtf += "\\par";
+
+  rtf += "\\b Date Completed: \\b0";
+  rtf += rtfEscape(formattedDate);
+  rtf += "\\par";
+
+  rtf += "\\b Activity: \\b0";
+  rtf += "Find the Teaching Moment";
+  rtf += "\\par";
+
+  /* Separator */
+
+  rtf += "\\pard\\brdrb";
+  rtf += "\\brdrs\\brdrw10";
+  rtf += "\\brsp12\\par\\par";
+
+  /* Scenarios and answers */
+
+  scenarios.forEach((scenario, index) => {
+
+    const number = index + 1;
+
+    rtf += "\\pard\\keepn\\sb250\\sa100";
+    rtf += "\\cf1\\b\\fs25";
+
+    rtf += "Scenario " + number + ": ";
+    rtf += rtfEscape(scenario.title);
+
+    rtf += "\\b0\\fs22\\par";
+
+    rtf += "\\pard\\sa180";
+    rtf += rtfEscape(scenario.description);
+    rtf += "\\par";
+
+    rtf += "\\pard\\keepn\\sb80\\sa80";
+    rtf += "\\cf1\\b";
+
+    rtf += "Response " + number + ":";
+
+    rtf += "\\b0\\par";
+
+    rtf += "\\pard\\ql\\sa190";
+    rtf += rtfEscape(responses[index]);
+    rtf += "\\par";
+
+    if(index < scenarios.length - 1) {
+      rtf += "\\pard\\sa90\\par";
+    }
+
+  });
+
+  rtf += "\\pard\\qc\\cf2\\fs18";
+  rtf += "Peer Intern Development Program";
+  rtf += "\\par";
+
+  rtf += "}";
+
+
+  /* Download file */
+
+  const blob = new Blob(
+    [rtf],
+    {
+      type:"application/rtf"
+    }
+  );
+
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+
+  const safeName = internName
+    .trim()
+    .replace(/[^a-zA-Z0-9 _-]/g, "")
+    .replace(/\s+/g, "_")
+    .slice(0, 70) || "Intern";
+
+  link.href = url;
+
+  link.download =
+    "FindTheTeachingMoment_" +
+    safeName +
+    ".rtf";
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+  setTimeout(() => {
+    URL.revokeObjectURL(url);
+  }, 1000);
+
+}
+
+
+/* ===========================================
+   PREVENT ACCIDENTAL LOSS OF RESPONSES
+=========================================== */
+
+window.addEventListener("beforeunload", event => {
+
+  const hasProgress =
+    submitted.some(Boolean) ||
+    responses.some(r => r.trim());
+
+  if(hasProgress) {
+    event.preventDefault();
+    event.returnValue = "";
+  }
+
+});
+
+
+/* ===========================================
+   INITIALIZE
+=========================================== */
+
+renderSlide();
+
+</script>
+
+</body>
+</html>
