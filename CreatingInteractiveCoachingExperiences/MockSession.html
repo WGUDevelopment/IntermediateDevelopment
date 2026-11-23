@@ -24,7 +24,10 @@ h3 { margin-top:25px; }
 input { width:100%; max-width:480px; padding:12px; border:1px solid #bdc9d8; border-radius:9px; font:inherit; display:block; }
 label { display:block; font-weight:bold; margin:12px 0 6px; }
 #mockRequest { margin-top:18px; }
-#mockCopyStatus { color:var(--muted); }
+#mockCopyStatus { color:var(--muted); margin-top:12px; }
+#mockCopyStatus.success { color:#146b45; font-weight:bold; }
+#mockCopyStatus.error { color:#a52b32; }
+.btn:disabled { opacity:.65; cursor:wait; }
 [hidden] { display:none!important; }
 .page-foot { text-align:center; padding:16px 0; color:var(--muted); font-size:14px; }
 @media(max-width:760px) { header { padding:25px 18px; width:calc(100% - 24px); margin-top:12px; } .layout { width:calc(100% - 24px); padding-top:16px; } .panel { padding:22px 18px; } }
@@ -50,34 +53,49 @@ label { display:block; font-weight:bold; margin:12px 0 6px; }
 <div hidden id="mockRequest">
 <label for="mockName">Your First and Last Name</label>
 <input id="mockName" type="text" autocomplete="name" placeholder="Enter your first and last name" maxlength="100">
-<button class="btn" type="button" style="margin-top:16px" onclick="copyMockRequest()">Copy Mock Session Request</button>
+<button class="btn" type="button" style="margin-top:16px" id="submitMockButton" onclick="submitMockRequest()">Submit Mock Session Request</button>
 <p aria-live="polite" id="mockCopyStatus"></p>
 </div>
 </section></main><footer class="page-foot">Creating Interactive Coaching Experiences · Step 5: Mock Session</footer></div>
 <script>
-async function copyMockRequest() {
-  const name = document.getElementById('mockName').value.trim();
+const MOCK_REQUEST_ENDPOINT = 'https://interactive-coaching-mock-request.breanna-evenson.workers.dev/';
+let mockRequestSubmitted = false;
+
+async function submitMockRequest() {
+  const name = document.getElementById('mockName').value.trim().replace(/\s+/g, ' ');
   const status = document.getElementById('mockCopyStatus');
-  if (name.split(/\s+/).length < 2) {
+  const button = document.getElementById('submitMockButton');
+  status.className = '';
+
+  if (mockRequestSubmitted) return;
+  if (name.length > 100 || name.split(' ').length < 2) {
     status.textContent = 'Please enter your first and last name.';
+    status.className = 'error';
     return;
   }
-  const text = `Mock Session Request\nLearning Path: Creating Interactive Coaching Experiences\nName: ${name}`;
+
+  button.disabled = true;
+  status.textContent = 'Submitting your mock session request…';
+
   try {
-    await navigator.clipboard.writeText(text);
-    status.textContent = 'Request copied! Paste it into a Teams message to your Development Program Supervisor.';
+    const response = await fetch(MOCK_REQUEST_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name })
+    });
+    if (!response.ok) throw new Error('Request failed with status ' + response.status);
+    const result = await response.json();
+    if (!result.success) throw new Error('The service did not confirm submission');
+
+    mockRequestSubmitted = true;
+    status.textContent = 'Your mock session request was submitted successfully! Your supervisor will coordinate scheduling.';
+    status.className = 'success';
+    button.textContent = 'Request Submitted';
   } catch (error) {
-    status.textContent = 'Automatic copying was unavailable. Select and copy the request below:';
-    let box = document.getElementById('copyFallback');
-    if (!box) {
-      box = document.createElement('textarea');
-      box.id = 'copyFallback';
-      box.readOnly = true;
-      box.style.cssText = 'display:block;width:100%;min-height:100px;margin-top:10px;';
-      status.after(box);
-    }
-    box.value = text;
-    box.select();
+    console.error('Mock session request error:', error);
+    status.textContent = 'We could not confirm delivery. Please contact your supervisor rather than submitting repeatedly.';
+    status.className = 'error';
+    button.disabled = false;
   }
 }
 </script>
