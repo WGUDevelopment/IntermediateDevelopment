@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Step 6: Check Understanding | Creating Interactive Coaching Experiences</title>
+<style>
+:root {
+  --navy: #172b4d;
+  --blue: #2457a7;
+  --teal: #087e8b;
+  --ink: #243247;
+  --muted: #627187;
+  --line: #dce4ee;
+  --bg: #f4f7fb;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 Arial, sans-serif;
+}
+
+header {
+  background: linear-gradient(120deg,#172b4d,#2457a7);
+  color: white;
+  padding: 42px 22px;
+}
+
+.hero, .layout {
+  max-width: 1120px;
+  margin: auto;
+}
+
+h1 {
+  font-size: clamp(2rem,5vw,3.2rem);
+  line-height: 1.1;
+}
+
+.hero p { color: #e5edff; }
+
+.layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 26px;
+  padding: 28px 20px;
+}
+
+aside {
+  position: sticky;
+  top: 18px;
+  align-self: start;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.track {
+  height: 9px;
+  background: #e8edf4;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0 18px;
+}
+
+.fill {
+  height: 100%;
+  width: 0;
+  background: var(--teal);
+  transition: width .3s;
+}
+
+nav {
+  display: grid;
+  gap: 7px;
+}
+
+nav button {
+  border: 0;
+  background: transparent;
+  text-align: left;
+  padding: 10px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+nav button.active {
+  background: #eaf2ff;
+  color: var(--blue);
+  font-weight: bold;
+}
+
+nav button:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.panel {
+  display: none;
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+.panel.active { display: block; }
+
+h2 { color: var(--navy); }
+
+h3 {
+  color: var(--navy);
+  margin-top: 25px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 13px;
+}
+
+.tile, .technique, .question {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 12px 0;
+}
+
+.callout {
+  padding: 15px;
+  border-left: 4px solid var(--teal);
+  background: #eef8f8;
+  border-radius: 8px;
+  margin: 18px 0;
+}
+
+.btn {
+  border: 0;
+  border-radius: 9px;
+  padding: 12px 18px;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: #e9eff8;
+  color: var(--navy);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+textarea, input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #bdc9d8;
+  border-radius: 9px;
+  font: inherit;
+}
+
+textarea {
+  min-height: 130px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 12px 0 6px;
+}
+
+.video-slot {
+  border: 2px dashed #bdc9d8;
+  padding: 16px;
+  border-radius: 12px;
+  margin: 12px 0;
+}
+
+video {
+  width: 100%;
+  max-height: 360px;
+  margin-top: 10px;
+  background: #111;
+}
+
+.level {
+  display: flex;
+  gap: 15px;
+  border: 1px solid var(--line);
+  padding: 14px;
+  margin: 9px 0;
+  border-radius: 10px;
+}
+
+.level b {
+  min-width: 90px;
+  color: var(--blue);
+}
+
+.option {
+  display: block;
+  padding: 8px;
+  cursor: pointer;
+  font-weight: normal;
+}
+
+.option input {
+  width: auto;
+  margin-right: 8px;
+}
+
+.feedback {
+  padding: 12px;
+  margin-top: 12px;
+  border-radius: 8px;
+}
+
+.good { background: #eaf7ef; color: #145c3b; }
+.bad { background: #fff3df; color: #754d00; }
+
+[hidden] { display: none !important; }
+
+@media(max-width:760px) {
+  .layout { grid-template-columns: 1fr; }
+  aside { position: static; }
+  .grid { grid-template-columns: 1fr; }
+  nav { grid-template-columns: repeat(2,1fr); }
+}
+
+/* Standalone Canvas page overrides: no navigation, progress locks, or hidden panels. */
+body {background:#ecf5f9; color:#001c3b; font:17px/1.7 Arial, sans-serif;}
+header {background:#001f43; border-bottom:6px solid #8add17; margin:24px auto 0; width:calc(100% - 40px); max-width:1180px; border-radius:20px; padding:34px 32px;}
+.hero {max-width:1080px;}
+.hero p:first-child {color:#8add17; font-size:13px; letter-spacing:1.8px; font-weight:700;}
+.hero h1 {margin:10px 0 14px; font-size:clamp(30px,4vw,44px);}
+.hero p:last-child {max-width:880px;}
+.layout {display:block;max-width:1180px;padding:24px 0 55px;width:calc(100% - 40px);}
+.panel {display:block; padding:32px 38px; border-color:#d4e3ed;}
+h2,h3 {color:#002852;}
+.callout {background:#eef6fa;border-left-color:#42b5ee;}
+.btn {background:#002852;}
+.btn:hover {background:#064575;}
+.btn:focus-visible, textarea:focus-visible, input:focus-visible {outline:3px solid #8add17; outline-offset:2px;}
+.page-foot {text-align:center; padding:16px 0; color:#52667a; font-size:14px;}
+.field-note {font-size:14px; color:#52667a;}
+@media(max-width:760px){header{padding:25px 18px;width:calc(100% - 24px);margin-top:12px}.layout{width:calc(100% - 24px);padding-top:16px}.panel{padding:22px 18px}}
+</style>
+</head>
+<body>
+<header><div class="hero"><p>PEER INTERN DEVELOPMENT PROGRAM | CREATING INTERACTIVE COACHING EXPERIENCES</p><h1>Step 6: Check Understanding</h1><p>Learn how to invite student participation, facilitate meaningful discussion, and choose engagement techniques that help students take an active role in learning.</p></div></header>
+<div class="layout"><main><section class="panel">
+<h2>Step 6: Check Understanding</h2>
+<p>Answer the 10 questions to check your understanding. You can review your answers and try again at any time; no minimum score is required to access other pages.</p>
+<div id="quiz"></div>
+<button class="btn" onclick="gradeQuiz()">
+Submit Answers
+</button>
+<button class="btn secondary" onclick="resetQuiz()">
+Try Again
+</button>
+<div aria-live="polite" id="quizResult"></div>
+
+</section></main><footer class="page-foot">Creating Interactive Coaching Experiences · Step 6: Check Understanding</footer></div>
+<script>const questions = [
+{
+q:'Which statement best describes student engagement?',
+o:[
+'Students complete every task without asking questions.',
+'Students show attention, curiosity, interest, and investment in learning.',
+'Students speak more than the coach.',
+'Students use the chat in every session.'
+],
+a:1,
+e:'Engagement includes intellectual, emotional, behavioral, physical, and social components.'
+},
+{
+q:'Which is an academic benefit of engagement?',
+o:[
+'Better information retention',
+'Less need for feedback',
+'Guaranteed perfect grades',
+'Shorter coaching sessions'
+],
+a:0,
+e:'Engagement supports information retention and academic achievement.'
+},
+{
+q:'Why should participation directions be clear?',
+o:[
+'To make sessions more formal',
+'So students know how, where, and when to contribute',
+'To avoid different perspectives',
+'So only confident students respond'
+],
+a:1,
+e:'Clear directions help students feel confident participating.'
+},
+{
+q:'Which technique collects simultaneous chat responses?',
+o:[
+'Round Robin',
+'Participant Reactions',
+'Popcorn Responses',
+'Open Discussion'
+],
+a:2,
+e:'Popcorn Responses are simultaneous chat submissions.'
+},
+{
+q:'Which technique uses emojis or reactions?',
+o:[
+'Participant Reactions',
+'Round Robin',
+'Group Discussion',
+'Popcorn Responses'
+],
+a:0,
+e:'Students use reactions or emojis to respond or vote.'
+},
+{
+q:'What is a useful guideline for polls?',
+o:[
+'Ask as many questions as possible',
+'Keep them short and focused',
+'Replace every discussion with polls',
+'Only ask yes/no questions'
+],
+a:1,
+e:'Polls should focus on one or two key questions.'
+},
+{
+q:'What is strong discussion facilitation?',
+o:[
+'The coach answers their own questions',
+'The coach asks only yes/no questions',
+'The coach speaks minimally and uses guiding questions',
+'The coach focuses on mistakes'
+],
+a:2,
+e:'Strong facilitation encourages deeper student thinking.'
+},
+{
+q:'Which is the strongest discussion prompt?',
+o:[
+'Are we ready to move on?',
+'Give me a thumbs up if you understand.',
+'Does that make sense?',
+'What do you hope to get from today’s session?'
+],
+a:3,
+e:'Open-ended questions encourage students to share their thinking.'
+},
+{
+q:'A student gives a vague answer. What should you do?',
+o:[
+'Move on immediately',
+'Ask a follow-up question',
+'Tell them the correct answer',
+'Stop the discussion'
+],
+a:1,
+e:'Follow-up questions help students think more deeply.'
+},
+{
+q:'Which technique gives every student a turn?',
+o:[
+'Round Robin',
+'Participant Reactions',
+'Polls',
+'Popcorn Responses'
+],
+a:0,
+e:'Round Robin gives students turns to share ideas.'
+}
+];
+function renderQuiz(){
+  const root=document.getElementById('quiz');root.replaceChildren();
+  questions.forEach((q,i)=>{
+    const fieldset=document.createElement('fieldset');fieldset.className='question';
+    const legend=document.createElement('legend');legend.textContent=`${i+1}. ${q.q}`;fieldset.appendChild(legend);
+    q.o.forEach((option,j)=>{
+      const label=document.createElement('label');label.className='option';
+      const input=document.createElement('input');input.type='radio';input.name='q'+i;input.value=j;
+      label.appendChild(input);label.appendChild(document.createTextNode(option));fieldset.appendChild(label);
+    });root.appendChild(fieldset);
+  });
+}
+function gradeQuiz(){
+  let score=0;let missing=[];
+  questions.forEach((q,i)=>{const a=document.querySelector(`input[name="q${i}"]:checked`);if(!a)missing.push(i+1);else if(Number(a.value)===q.a)score++;});
+  const result=document.getElementById('quizResult');
+  if(missing.length){result.textContent='Please answer all questions before checking your responses. Missing: '+missing.join(', ');result.className='feedback bad';return;}
+  result.textContent=`Your Score: ${score}/${questions.length}. Review the feedback below. You can try again at any time.`;
+  result.className='feedback '+(score===questions.length?'good':'bad');
+  document.querySelectorAll('.question .feedback').forEach(el=>el.remove());
+  questions.forEach((q,i)=>{
+    const a=Number(document.querySelector(`input[name="q${i}"]:checked`).value);
+    const feedback=document.createElement('div');feedback.className='feedback '+(a===q.a?'good':'bad');
+    feedback.textContent=(a===q.a?'Correct! ':'Incorrect. Correct answer: '+q.o[q.a]+'. ')+q.e;
+    document.querySelectorAll('.question')[i].appendChild(feedback);
+  });
+}
+function resetQuiz(){renderQuiz();const result=document.getElementById('quizResult');result.textContent='';result.className='';}
+renderQuiz();</script>
+</body></html>
