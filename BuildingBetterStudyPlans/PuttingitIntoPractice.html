@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Step 4 | Mock Session &amp; Peer Review — Building Better Study Plans</title>
+<style>
+:root{--navy:#09284f;--navy2:#133e6c;--blue:#1665a8;--cyan:#09a5c2;--sky:#eaf7fb;--gold:#d5a330;--ink:#20334a;--muted:#56677b;--line:#dce6ef;--paper:#f6f9fc;--white:#fff;--green:#167e68;--shadow:0 14px 38px rgba(9,40,79,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.58 'Segoe UI',Arial,sans-serif}button{font:inherit} .wrap{max-width:1120px;margin:auto;padding:0 28px}.hero{background:linear-gradient(120deg,#08264a 0%,#0f4473 75%,#08617d 100%);color:#fff;position:relative;overflow:hidden}.hero:before{content:"";position:absolute;right:-110px;top:-140px;width:440px;height:440px;border:1px solid #ffffff2c;border-radius:50%;box-shadow:0 0 0 65px #ffffff0a,0 0 0 132px #ffffff09}.hero .wrap{position:relative;padding-top:54px;padding-bottom:59px}.eyebrow{display:flex;align-items:center;gap:9px;text-transform:uppercase;letter-spacing:2.3px;font-size:12px;font-weight:800;color:#a7e7f2;margin-bottom:17px}.eyebrow:before{content:"";width:25px;height:3px;background:var(--gold);border-radius:3px}.hero h1{font-size:clamp(32px,5vw,49px);line-height:1.11;letter-spacing:-1.6px;margin:0 0 17px;max-width:750px}.hero p{font-size:18px;line-height:1.65;max-width:740px;color:#e0eef8;margin:0}.hero-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:25px}.hero-tags span{padding:6px 12px;border:1px solid #ffffff48;border-radius:30px;background:#ffffff0e;font-size:12px;font-weight:700;color:#eaf7ff}.main{padding-top:34px;padding-bottom:70px}.section{margin-top:37px}.section-head{display:flex;gap:13px;align-items:center;margin-bottom:15px}.number{display:grid;place-items:center;background:var(--navy);color:#fff;width:33px;height:33px;flex-shrink:0;border-radius:10px;font-size:14px;font-weight:800}.section h2{margin:0;font-size:24px;line-height:1.28;letter-spacing:-.45px;color:var(--navy)}.lead{font-size:16px;color:var(--muted);margin:0 0 18px}.panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:25px 27px;box-shadow:var(--shadow)}.recap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.recap-card{padding:20px 21px;border:1px solid #dce7ef;border-radius:13px;background:#fff}.recap-card .pill{display:inline-block;color:var(--blue);background:#e9f3fa;padding:3px 10px;border-radius:20px;text-transform:uppercase;letter-spacing:.8px;font-size:11px;font-weight:800;margin-bottom:11px}.recap-card h3{margin:0 0 8px;font-size:17px;color:var(--navy)}.recap-card p{margin:0;color:var(--muted);font-size:14px;line-height:1.65}.callout{margin-top:18px;display:flex;gap:15px;align-items:flex-start;background:var(--sky);border-left:4px solid var(--cyan);border-radius:0 12px 12px 0;padding:17px 20px}.callout svg{flex-shrink:0;margin-top:2px;color:#08758d}.callout p{margin:0;color:#26475b}.callout strong{color:var(--navy)}.scenario{display:grid;grid-template-columns:1fr auto;gap:22px;align-items:center;background:linear-gradient(105deg,#f1f7fc,#fff);border:1px solid #d7e7f4;border-radius:16px;padding:24px 27px}.scenario h3{font-size:18px;margin:0 0 8px;color:var(--navy)}.scenario p{margin:0;max-width:740px}.scenario-icon{width:74px;height:74px;display:grid;place-items:center;border-radius:19px;background:#dceff8;color:var(--blue)}.steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:17px}.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 19px}.step .stepnum{font-size:11px;letter-spacing:1.2px;text-transform:uppercase;color:var(--green);font-weight:800;margin-bottom:9px}.step h3{font-size:17px;color:var(--navy);margin:0 0 9px}.step p{font-size:14px;color:var(--muted);margin:0;line-height:1.62}.how-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.how-grid h3{margin:0 0 11px;font-size:17px;color:var(--navy)}.how-grid p{margin:0;color:var(--muted)}.how-grid ul{margin:10px 0 0;padding-left:20px;color:var(--muted)}.how-grid li+li{margin-top:7px}.feedback-band{background:#f0f7ff;border:1px solid #d5e5f7;padding:20px 22px;border-radius:13px;margin-top:17px;display:flex;gap:14px}.feedback-band h3{margin:0 0 5px;color:var(--navy);font-size:16px}.feedback-band p{margin:0;color:#465f77;font-size:14px}.feedback-band svg{flex-shrink:0;color:var(--blue)}.role-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}.role{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}.role-head{padding:22px 23px 17px;border-top:5px solid var(--blue)}.role.live .role-head{border-top-color:var(--cyan)}.role .role-eyebrow{text-transform:uppercase;color:var(--blue);font-size:11px;font-weight:800;letter-spacing:1.3px}.role.live .role-eyebrow{color:#0786a0}.role h3{font-size:22px;letter-spacing:-.4px;color:var(--navy);margin:6px 0 8px}.role p{margin:0;color:var(--muted);font-size:14px}.role-bottom{padding:0 23px 23px;margin-top:auto}.participants{padding:13px 15px;border-radius:11px;background:#f2f6fa;color:#3f5266;font-size:14px;margin-bottom:17px}.participants strong{color:var(--navy)}.request{width:100%;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:10px;background:var(--navy);color:#fff;border:0;border-radius:11px;padding:14px 13px;font-size:14px;font-weight:800;transition:background .15s,transform .15s}.request:hover{background:#16517e;transform:translateY(-1px)}.request:focus-visible{outline:3px solid #e3ae3b;outline-offset:3px}.request:disabled{cursor:wait;opacity:.7}.live .request{background:#086c85}.live .request:hover{background:#09586e}.request svg{width:18px;height:18px}.status{min-height:23px;margin-top:10px;font-size:13px;line-height:1.4}.status.success{color:#087353}.status.error{color:#b02e2e}.note{font-size:13px;color:#69798a;margin:17px 0 0}.closing{border-top:1px solid var(--line);padding-top:22px;margin-top:31px;text-align:center;color:var(--muted);font-size:14px}.closing strong{color:var(--navy)}@media(max-width:730px){.wrap{padding-left:18px;padding-right:18px}.hero .wrap{padding-top:38px;padding-bottom:43px}.hero p{font-size:16px}.recap-grid,.steps,.how-grid,.role-grid{grid-template-columns:1fr}.scenario{grid-template-columns:1fr}.scenario-icon{display:none}.panel{padding:19px}.section h2{font-size:21px}.hero h1{letter-spacing:-.8px}}@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+
+/* Align with the existing Building Better Study Plans learning path pages. */
+:root{--navy:#001f43;--blue:#002b58;--cyan:#42b5ee;--sky:#eef6fa;--ink:#001c3b;--muted:#30445c;--line:#d4e3ed;--paper:#ecf5f9;--green:#8add17;--shadow:0 7px 22px rgba(0,28,58,.035)}
+body{background:var(--paper);color:var(--ink);font:17px/1.72 Arial,'Segoe UI',sans-serif}
+.wrap{max-width:1280px;padding-left:46px;padding-right:46px}
+.hero{margin:27px auto 0;width:calc(100% - 92px);max-width:1188px;border-radius:21px;background:#001f43;border-bottom:7px solid #8add17;box-shadow:none}
+.hero:before{display:none}
+.hero .wrap{max-width:none;padding:45px 49px 49px}
+.eyebrow{display:block;margin:0 0 17px;color:#89e31d;font-size:14px;letter-spacing:2px;line-height:1.5}
+.eyebrow:before{display:none}
+.hero h1{font-size:clamp(30px,4vw,47px);font-weight:750;letter-spacing:-.7px;line-height:1.2;max-width:100%;margin-bottom:23px}
+.hero p{max-width:980px;color:#fff;font-size:20px;line-height:1.8}
+.hero-tags{margin-top:22px}.hero-tags span{color:#e4f4ff;background:#ffffff13;border-color:#ffffff35}
+.main{max-width:1280px;padding-top:27px;padding-bottom:65px}
+.section{margin:26px 0 0;padding:33px 40px 36px;background:#fff;border:1px solid #d3e2ed;border-radius:17px;box-shadow:0 8px 21px rgba(9,40,79,.035)}
+.section-head{gap:0;margin-bottom:16px}.number{display:none}
+.section h2{font-size:29px;letter-spacing:-.35px;line-height:1.3;color:#002852}
+.lead{font-size:17px;color:#102f51;line-height:1.75;margin:0 0 23px}
+.panel{border:0;box-shadow:none;padding:0;background:transparent}
+.recap-card,.step,.role{box-shadow:none;border-radius:12px;border:1px solid #d5e3eb;background:#f9fcfe}
+.recap-card h3,.step h3,.role h3,.scenario h3,.how-grid h3{color:#002852}
+.recap-card p,.step p,.role p,.how-grid p,.how-grid ul{color:#273e55}
+.recap-card .pill{color:#003b6a;background:#e6f3fb}
+.scenario{background:#f3f9fc;border-color:#d8e8f1}.scenario-icon{background:#dbeef8;color:#005a8f}
+.callout{background:#edf5f9;border-left:4px solid #46b7f0;border-radius:0 12px 12px 0}.callout svg{color:#1484bf}.callout p{color:#002852}
+.feedback-band{background:#edf5f9;border-color:#d4e6f1}.feedback-band svg{color:#0787c0}
+.role-head{border-top-color:#002852}.role.live .role-head{border-top-color:#8add17}
+.role .role-eyebrow,.role.live .role-eyebrow{color:#00669f}.participants{background:#eaf3f8;color:#16395b}
+.request,.live .request{background:#002852}.request:hover,.live .request:hover{background:#064575}
+.step .stepnum{color:#347c07}.closing{margin-top:26px}
+@media(max-width:730px){.hero{width:calc(100% - 32px);margin-top:16px;border-radius:17px}.hero .wrap{padding:32px 25px 36px}.hero p{font-size:16px}.wrap{padding-left:16px;padding-right:16px}.main{padding-top:0}.section{padding:24px 20px;margin-top:18px}.section h2{font-size:23px}.lead{font-size:16px}}
+
+.peer-steps{margin-top:0}.peer-steps .step{background:#f9fcfe}.peer-steps .step p{font-size:15px}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap"><div class="eyebrow">Intermediate Development | Building Better Study Plans</div><h1>Mock Session &amp; Peer Review</h1><p>Put your study planning skills into practice through a recorded mock session, then strengthen your coaching perspective by reviewing a peer’s session.</p></div></header>
+<main class="wrap main">
+<section aria-labelledby="recap" class="section" style="margin-top:0"><div class="section-head"><span class="number">01</span><h2 id="recap">What you've learned so far</h2></div><p class="lead">Throughout this learning path, you've explored how to help students build personalized study plans without taking ownership of their learning away from them.</p><div class="recap-grid">
+<article class="recap-card"><div class="pill">Recognize</div><h3>Identify when planning is useful</h3><p>Recognize opportunities for a study plan, including when a student is beginning a course, preparing for an assessment, or working toward a retake.</p></article>
+<article class="recap-card"><div class="pill">Collaborate</div><h3>Build a plan with the student</h3><p>Use coaching questions to explore goals, available time, course topics, learning resources, and possible barriers. Keep the conversation collaborative—not an advising session.</p></article>
+<article class="recap-card"><div class="pill">Personalize</div><h3>Make the plan realistic and actionable</h3><p>Break larger goals into manageable targets, identify days and time blocks, include appropriate learning supports, and establish useful check-ins and accountability.</p></article>
+<article class="recap-card"><div class="pill">Empower</div><h3>Support student ownership</h3><p>Help students make decisions about their own plan, practice using it, and leave with clear next steps they feel confident carrying out.</p></article>
+</div></section>
+<section aria-labelledby="scenario" class="section"><div class="section-head"><span class="number">02</span><h2 id="scenario">Your mock session scenario</h2></div><div class="scenario"><div><h3>A student starting a new course</h3><p>You'll coach a student who is <strong>brand new to the course</strong> and has <strong>no prior knowledge of its topics</strong>. Your goal is to collaboratively create a realistic study plan that helps them get started, identify resources, and determine what to work on and when.</p></div><div aria-hidden="true" class="scenario-icon"><svg fill="none" height="42" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.6" viewbox="0 0 24 24" width="42"><path d="M3 4.5c3.2-1.3 6.3-.9 9 1.1v14c-2.7-2-5.8-2.4-9-1.1z"></path><path d="M21 4.5c-3.2-1.3-6.3-.9-9 1.1v14c2.7-2 5.8-2.4 9-1.1z"></path></svg></div></div><div class="callout"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><p><strong>No KWL chart for this scenario.</strong> Because the student is unfamiliar with the course topics, a KWL study strategy is not needed. Instead, focus on exploring the course structure, identifying resources, and establishing a manageable starting plan.</p></div></section>
+<section aria-labelledby="feedback" class="section"><div class="section-head"><span class="number">03</span><h2 id="feedback">How the peer review process works</h2></div>
+<p class="lead">You will complete a mock session that will be recorded. Instead of receiving live feedback from the development program supervisor or a senior peer navigator, you will exchange feedback with another peer navigator who is completing this same learning path.</p>
+<div class="steps peer-steps">
+<article class="step"><div class="stepnum">Step 1</div><h3>Complete your recorded mock</h3><p>Choose the appointment or live event environment that fits your coaching role. Facilitate a mock session focused on collaboratively building a study plan. Your session will be recorded for peer review.</p></article>
+<article class="step"><div class="stepnum">Step 2</div><h3>Receive a peer recording</h3><p>After your mock, you will be sent a recording of another peer navigator's mock session from this learning path. Assignment timing depends on when peers complete their own sessions.</p></article>
+<article class="step"><div class="stepnum">Step 3</div><h3>Submit anonymous feedback</h3><p>Once you receive your assigned recording, watch it and continue to the <strong>next page in Canvas</strong> to submit your review. Your feedback will be shared anonymously with the peer you reviewed.</p></article>
+</div><div class="feedback-band"><svg aria-hidden="true" fill="none" height="26" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" viewbox="0 0 24 24" width="26"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg><div><h3>When will I receive a peer recording?</h3><p>It may take <strong>anywhere from one day to two weeks</strong> after your mock session, depending on the progress of other peer navigators in this learning path. You do not need to submit peer feedback until you receive your assigned recording.</p></div></div>
+<div class="callout"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><p><strong>Review with a growth mindset.</strong> Identify effective coaching practices and provide specific, constructive suggestions grounded in the study planning skills covered in this learning path. Do not share mock session recordings with others without the permission of the peer navigator in the mock session.</p></div>
+</section>
+<section aria-labelledby="live-event-note" class="section"><div class="section-head"><span class="number">04</span><h2 id="live-event-note">Special guidance for live event coaches</h2></div><p class="lead">This mock is intentionally streamlined so you can concentrate on helping students create and practice a study plan.</p><div class="steps"><article class="step"><div class="stepnum">AFFIRM · Step 1 of this mock</div><h3>Frame the Session</h3><p>Set the expectation that the group will work collaboratively to develop realistic study plans for a course they are just beginning.</p></article><article class="step"><div class="stepnum">AFFIRM · Step 2 of this mock</div><h3>Focus on the Strategy</h3><p>Introduce the purpose and key components of a study plan, modeling how to use the course overview, resources, time blocks, and goals to plan effectively.</p></article><article class="step"><div class="stepnum">AFFIRM · Step 3 of this mock</div><h3>Intentional Practice</h3><p>Facilitate hands-on planning with both students. Invite them to make choices, explain their thinking, and leave with actionable steps they have selected themselves.</p></article></div><div class="callout"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><p><strong>Only these three AFFIRM steps are included.</strong> Skip the other three AFFIRM steps for this mock. <strong>No discussion map is required.</strong> You are welcome to create a discussion map if you feel it is necessary. These adjustments apply to the practice mock, not the full live event format.</p></div></section>
+<section aria-labelledby="choose" class="section"><div class="section-head"><span class="number">05</span><h2 id="choose">Request your recorded mock session</h2></div><p class="lead">Select the coaching environment that best matches your role. Your mock will be recorded so a peer in this learning path can review it later.</p><div class="role-grid"><article class="role"><div class="role-head"><div class="role-eyebrow">1:1 coaching practice</div><h3>Appointment Coaches</h3><p>Practice collaboratively building a study plan in an individual student appointment.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student. The session is recorded for peer review.</div><button class="request" id="appointmentButton" onclick="sendRequest('appointment')" type="button"><span>Request Appointment Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="appointmentStatus"></div></div></article><article class="role live"><div class="role-head"><div class="role-eyebrow">Group facilitation practice</div><h3>Live Event Coaches</h3><p>Practice supporting two students as they collaborate, make decisions, and apply study planning strategies.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student 1 · Student 2. The session is recorded for peer review.</div><button class="request" id="liveEventButton" onclick="sendRequest('liveEvent')" type="button"><span>Request Live Event Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="liveEventStatus"></div></div></article></div><p class="note">Submitting a request informs the development program supervisor that you are ready to schedule your mock session. After your recorded mock, you will receive a peer recording when one becomes available, then submit anonymous feedback on the next Canvas page.</p></section>
+<footer class="closing"><strong>Building Better Study Plans</strong> · Step 4 — Mock Session &amp; Peer Review</footer>
+</main>
+<script>
+/* CONFIGURATION: Replace each empty string with the corresponding Teams / Power Automate webhook URL. */
+const WEBHOOKS = {
+  appointment: '', // Appointment-coach request webhook URL
+  liveEvent: ''     // Live-event-coach request webhook URL
+};
+async function sendRequest(role){
+  const isAppointment = role === 'appointment';
+  const button = document.getElementById(isAppointment ? 'appointmentButton' : 'liveEventButton');
+  const status = document.getElementById(isAppointment ? 'appointmentStatus' : 'liveEventStatus');
+  const url = WEBHOOKS[role];
+  status.className = 'status';
+  if(!url){status.textContent = 'This request button has not been connected to a Teams webhook yet. Please contact your supervisor.';status.classList.add('error');return;}
+  button.disabled = true;
+  status.textContent = 'Sending your request…';
+  const payload = {
+    learningPath: 'Building Better Study Plans',
+    step: 'Step 4: Mock Session & Peer Review',
+    requestType: isAppointment ? 'Appointment Coach Mock' : 'Live Event Coach Mock',
+    role: isAppointment ? 'Appointment Coach' : 'Live Event Coach',
+    rolePlayers: isAppointment ? 1 : 2,
+    feedbackFormat: 'Recorded mock followed by anonymous peer review',
+    recordingRequired: true,
+    peerReview: 'Peer recording assigned after mock; anonymous feedback submitted on next Canvas page',
+    scenario: 'Student new to course; no existing topic knowledge; no KWL',
+    timestamp: new Date().toISOString()
+  };
+  try{
+    const response = await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+    if(!response.ok)throw new Error('Webhook returned '+response.status);
+    status.textContent = 'Your request was sent successfully.';
+    status.classList.add('success');
+  }catch(error){
+    console.error('Mock request failed:',error);
+    status.textContent = 'We could not confirm that your request was delivered. Please contact your supervisor instead of submitting repeatedly.';
+    status.classList.add('error');
+  }finally{button.disabled=false;}
+}
+</script>
+</body>
+</html>
