@@ -5,254 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Step 1: The Importance of Student Engagement | Creating Interactive Coaching Experiences</title>
 <style>
-:root {
-  --navy: #172b4d;
-  --blue: #2457a7;
-  --teal: #087e8b;
-  --ink: #243247;
-  --muted: #627187;
-  --line: #dce4ee;
-  --bg: #f4f7fb;
-}
-
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--ink);
-  font: 16px/1.6 Arial, sans-serif;
-}
-
-header {
-  background: linear-gradient(120deg,#172b4d,#2457a7);
-  color: white;
-  padding: 42px 22px;
-}
-
-.hero, .layout {
-  max-width: 1120px;
-  margin: auto;
-}
-
-h1 {
-  font-size: clamp(2rem,5vw,3.2rem);
-  line-height: 1.1;
-}
-
-.hero p { color: #e5edff; }
-
-.layout {
-  display: grid;
-  grid-template-columns: 260px 1fr;
-  gap: 26px;
-  padding: 28px 20px;
-}
-
-aside {
-  position: sticky;
-  top: 18px;
-  align-self: start;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 18px;
-}
-
-.track {
-  height: 9px;
-  background: #e8edf4;
-  border-radius: 20px;
-  overflow: hidden;
-  margin: 10px 0 18px;
-}
-
-.fill {
-  height: 100%;
-  width: 0;
-  background: var(--teal);
-  transition: width .3s;
-}
-
-nav {
-  display: grid;
-  gap: 7px;
-}
-
-nav button {
-  border: 0;
-  background: transparent;
-  text-align: left;
-  padding: 10px;
-  border-radius: 9px;
-  cursor: pointer;
-  font-size: 15px;
-  color: var(--ink);
-}
-
-nav button.active {
-  background: #eaf2ff;
-  color: var(--blue);
-  font-weight: bold;
-}
-
-nav button:disabled {
-  opacity: .4;
-  cursor: not-allowed;
-}
-
-.panel {
-  display: none;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  padding: 30px;
-}
-
-.panel.active { display: block; }
-
-h2 { color: var(--navy); }
-
-h3 {
-  color: var(--navy);
-  margin-top: 25px;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2,1fr);
-  gap: 13px;
-}
-
-.tile, .technique, .question {
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 16px;
-  margin: 12px 0;
-}
-
-.callout {
-  padding: 15px;
-  border-left: 4px solid var(--teal);
-  background: #eef8f8;
-  border-radius: 8px;
-  margin: 18px 0;
-}
-
-.btn {
-  border: 0;
-  border-radius: 9px;
-  padding: 12px 18px;
-  background: var(--blue);
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.btn.secondary {
-  background: #e9eff8;
-  color: var(--navy);
-}
-
-.actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 20px;
-}
-
-textarea, input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #bdc9d8;
-  border-radius: 9px;
-  font: inherit;
-}
-
-textarea {
-  min-height: 130px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin: 12px 0 6px;
-}
-
-.video-slot {
-  border: 2px dashed #bdc9d8;
-  padding: 16px;
-  border-radius: 12px;
-  margin: 12px 0;
-}
-
-video {
-  width: 100%;
-  max-height: 360px;
-  margin-top: 10px;
-  background: #111;
-}
-
-.level {
-  display: flex;
-  gap: 15px;
-  border: 1px solid var(--line);
-  padding: 14px;
-  margin: 9px 0;
-  border-radius: 10px;
-}
-
-.level b {
-  min-width: 90px;
-  color: var(--blue);
-}
-
-.option {
-  display: block;
-  padding: 8px;
-  cursor: pointer;
-  font-weight: normal;
-}
-
-.option input {
-  width: auto;
-  margin-right: 8px;
-}
-
-.feedback {
-  padding: 12px;
-  margin-top: 12px;
-  border-radius: 8px;
-}
-
-.good { background: #eaf7ef; color: #145c3b; }
-.bad { background: #fff3df; color: #754d00; }
-
-[hidden] { display: none !important; }
-
-@media(max-width:760px) {
-  .layout { grid-template-columns: 1fr; }
-  aside { position: static; }
-  .grid { grid-template-columns: 1fr; }
-  nav { grid-template-columns: repeat(2,1fr); }
-}
-
-/* Standalone Canvas page overrides: no navigation, progress locks, or hidden panels. */
-body {background:#ecf5f9; color:#001c3b; font:17px/1.7 Arial, sans-serif;}
-header {background:#001f43; border-bottom:6px solid #8add17; margin:24px auto 0; width:calc(100% - 40px); max-width:1180px; border-radius:20px; padding:34px 32px;}
-.hero {max-width:1080px;}
-.hero p:first-child {color:#8add17; font-size:13px; letter-spacing:1.8px; font-weight:700;}
-.hero h1 {margin:10px 0 14px; font-size:clamp(30px,4vw,44px);}
-.hero p:last-child {max-width:880px;}
-.layout {display:block;max-width:1180px;padding:24px 0 55px;width:calc(100% - 40px);}
-.panel {display:block; padding:32px 38px; border-color:#d4e3ed;}
-h2,h3 {color:#002852;}
-.callout {background:#eef6fa;border-left-color:#42b5ee;}
-.btn {background:#002852;}
-.btn:hover {background:#064575;}
-.btn:focus-visible, textarea:focus-visible, input:focus-visible {outline:3px solid #8add17; outline-offset:2px;}
-.page-foot {text-align:center; padding:16px 0; color:#52667a; font-size:14px;}
-.field-note {font-size:14px; color:#52667a;}
+:root {--navy:#172b4d;--blue:#2457a7;--teal:#087e8b;--ink:#243247;--muted:#627187;--line:#dce4ee;--bg:#f4f7fb;}
+*{box-sizing:border-box}
+body{margin:0;background:#ecf5f9;color:#001c3b;font:17px/1.7 Arial,sans-serif}
+header{background:#001f43;color:white;border-bottom:6px solid #8add17;margin:24px auto 0;width:calc(100% - 40px);max-width:1180px;border-radius:20px;padding:34px 32px}
+.hero{max-width:1080px;margin:auto}
+.hero p:first-child{color:#8add17;font-size:13px;letter-spacing:1.8px;font-weight:700}
+.hero h1{margin:10px 0 14px;font-size:clamp(30px,4vw,44px);line-height:1.1}
+.hero p:last-child{max-width:880px;color:#e5edff}
+.layout{display:block;max-width:1180px;padding:24px 0 55px;width:calc(100% - 40px);margin:auto}
+.panel{display:block;background:#fff;border:1px solid #d4e3ed;border-radius:16px;padding:32px 38px}
+h2,h3{color:#002852}h3{margin-top:30px}
+p{margin:0 0 16px}
+.benefits{list-style:disc;padding-left:25px;margin:12px 0 25px}
+.benefits li{padding-left:3px;margin:0 0 18px}
+.benefits li strong{color:#002852}
+.benefits li p{margin:4px 0 0;color:#30445c}
+.callout{padding:17px 19px;border-left:4px solid #42b5ee;background:#eef6fa;border-radius:8px;margin:24px 0 4px}
+.page-foot{text-align:center;padding:16px 0;color:#52667a;font-size:14px}
 @media(max-width:760px){header{padding:25px 18px;width:calc(100% - 24px);margin-top:12px}.layout{width:calc(100% - 24px);padding-top:16px}.panel{padding:22px 18px}}
 </style>
 </head>
@@ -260,48 +30,23 @@ h2,h3 {color:#002852;}
 <header><div class="hero"><p>PEER INTERN DEVELOPMENT PROGRAM | CREATING INTERACTIVE COACHING EXPERIENCES</p><h1>Step 1: The Importance of Student Engagement</h1><p>Learn how to invite student participation, facilitate meaningful discussion, and choose engagement techniques that help students take an active role in learning.</p></div></header>
 <div class="layout"><main><section class="panel">
 <h2>Step 1: The Importance of Student Engagement</h2>
-<p>
-Student engagement refers to the level of attention,
-curiosity, interest, and passion a student shows
-when learning or being taught. 
-Engagement extends beyond simple participation.
-It includes intellectual, emotional, behavioral,
-physical, and social components.
-</p>
+<p>Student engagement refers to the level of attention, curiosity, interest, and passion a student shows when learning or being taught. Engagement extends beyond simple participation. It includes intellectual, emotional, behavioral, physical, and social components.</p>
 <h3>Academic Benefits</h3>
-<ul>
-<li>Improved academic achievement</li>
-<li>Better information retention</li>
-<li>Deeper conceptual understanding</li>
-<li>Higher-quality work</li>
+<p>When students actively engage with learning material, they have more opportunities to think critically, make connections, ask questions, and apply what they are learning. This can support several academic outcomes:</p>
+<ul class="benefits">
+<li><strong>Improved academic achievement</strong><p>Engaged students are more likely to spend meaningful time working through challenging concepts and checking their understanding. Active involvement can help them prepare more effectively for assessments and make progress toward their course goals. In coaching sessions, asking students to explain their reasoning rather than simply listen encourages this kind of involvement.</p></li>
+<li><strong>Better information retention</strong><p>Students are more likely to remember information when they do something with it. Discussing a concept, recalling it from memory, or applying it in a practice activity helps strengthen learning compared with passively hearing an explanation. Engagement techniques can give students repeated opportunities to retrieve and use information.</p></li>
+<li><strong>Deeper conceptual understanding</strong><p>Engagement encourages students to move beyond memorizing terms and toward understanding how ideas connect. Open-ended questions, discussion, and collaborative activities invite students to examine relationships, identify gaps in their thinking, and explain concepts in their own words.</p></li>
+<li><strong>Higher-quality work</strong><p>When students participate actively, they have more chances to clarify expectations, consider different approaches, and reflect on their progress. This can help them produce more thoughtful work, recognize where improvement is needed, and make purposeful revisions before completing an assignment or assessment.</p></li>
 </ul>
 <h3>Behavioral and Social-Emotional Benefits</h3>
-<ul>
-<li>Increased persistence</li>
-<li>Greater self-efficacy</li>
-<li>Better attendance</li>
+<p>Engagement also shapes how students experience the learning process. A coaching environment that invites participation and values students' contributions can strengthen confidence, connection, and follow-through.</p>
+<ul class="benefits">
+<li><strong>Increased persistence</strong><p>Students who feel involved in their learning may be more willing to keep trying when they encounter difficult material. Interactive coaching helps them break challenges into manageable actions, explore alternative approaches, and see that a setback does not have to end their progress.</p></li>
+<li><strong>Greater self-efficacy</strong><p>Self-efficacy is a student's belief in their ability to succeed at a specific task. When students share an idea, practice a strategy, and notice their own progress, they build evidence that they can influence their learning outcomes. Coaches can support this by creating opportunities for students to make decisions and recognize what they accomplished.</p></li>
+<li><strong>Better attendance</strong><p>Students may be more likely to return to coaching appointments and live events when they expect to be welcomed, included, and actively involved. Meaningful interaction helps sessions feel relevant and worthwhile rather than like something they simply sit through. Consistent attendance also creates more opportunities for continued practice and support.</p></li>
 </ul>
-<div class="callout">
-When students are engaged, they become invested
-in their own learning journey.
-</div>
-<h3>Reflection Activity</h3>
-<p>
-Reflect on what you've read about the importance
-of student engagement. Share ideas on how NOT
-fostering engagement could affect students.
-</p>
-<label for="reflection">Your Reflection</label>
-<textarea id="reflection" placeholder="Share your thoughts here..."></textarea>
-<button class="btn" onclick="copyReflection()">Copy My Reflection</button>
-<div aria-live="polite" id="reflectionStatus"></div>
+<div class="callout"><strong>Key takeaway:</strong> When students are engaged, they become more invested in their own learning journey. Interactive coaching isn't simply about getting students to speak or use the chat—it's about creating opportunities for them to think, contribute, practice, and take ownership of their progress.</div>
 </section></main><footer class="page-foot">Creating Interactive Coaching Experiences · Step 1: The Importance of Student Engagement</footer></div>
-<script>
-async function copyReflection(){
-  const value=document.getElementById('reflection').value.trim();
-  const status=document.getElementById('reflectionStatus');
-  if(!value){status.textContent='Write your reflection before copying.';return;}
-  try{await navigator.clipboard.writeText(value);status.textContent='Reflection copied. You can paste it into your Canvas assignment if needed.';}
-  catch(e){document.getElementById('reflection').select();status.textContent='Select and copy your reflection from the text field.';}
-}</script>
-</body></html>
+</body>
+</html>
