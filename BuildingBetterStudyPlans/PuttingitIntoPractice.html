@@ -41,6 +41,8 @@ body{background:var(--paper);color:var(--ink);font:17px/1.72 Arial,'Segoe UI',sa
 @media(max-width:730px){.hero{width:calc(100% - 32px);margin-top:16px;border-radius:17px}.hero .wrap{padding:32px 25px 36px}.hero p{font-size:16px}.wrap{padding-left:16px;padding-right:16px}.main{padding-top:0}.section{padding:24px 20px;margin-top:18px}.section h2{font-size:23px}.lead{font-size:16px}}
 
 .peer-steps{margin-top:0}.peer-steps .step{background:#f9fcfe}.peer-steps .step p{font-size:15px}
+/* Requester identification for the Cloudflare mock request workflow. */
+.name-field{max-width:530px;margin:0 0 21px}.name-field label{display:block;font-weight:700;color:#002852;margin-bottom:7px}.name-field input{width:100%;padding:13px 15px;border:1px solid #b8cbdc;border-radius:10px;font:inherit;background:#fff;color:#001c3b}.name-field input:focus{outline:3px solid #a5d9f3;outline-offset:1px;border-color:#00669f}.name-field .hint{font-size:13px;color:#56677b;margin:6px 0 0}
 </style>
 </head>
 <body>
@@ -63,46 +65,48 @@ body{background:var(--paper);color:var(--ink);font:17px/1.72 Arial,'Segoe UI',sa
 <div class="callout"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><p><strong>Review with a growth mindset.</strong> Identify effective coaching practices and provide specific, constructive suggestions grounded in the study planning skills covered in this learning path. Do not share mock session recordings with others without the permission of the peer navigator in the mock session.</p></div>
 </section>
 <section aria-labelledby="live-event-note" class="section"><div class="section-head"><span class="number">04</span><h2 id="live-event-note">Special guidance for live event coaches</h2></div><p class="lead">This mock is intentionally streamlined so you can concentrate on helping students create and practice a study plan.</p><div class="steps"><article class="step"><div class="stepnum">AFFIRM · Step 1 of this mock</div><h3>Frame the Session</h3><p>Set the expectation that the group will work collaboratively to develop realistic study plans for a course they are just beginning.</p></article><article class="step"><div class="stepnum">AFFIRM · Step 2 of this mock</div><h3>Focus on the Strategy</h3><p>Introduce the purpose and key components of a study plan, modeling how to use the course overview, resources, time blocks, and goals to plan effectively.</p></article><article class="step"><div class="stepnum">AFFIRM · Step 3 of this mock</div><h3>Intentional Practice</h3><p>Facilitate hands-on planning with both students. Invite them to make choices, explain their thinking, and leave with actionable steps they have selected themselves.</p></article></div><div class="callout"><svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="22"><circle cx="12" cy="12" r="10"></circle><path d="M12 11v6M12 7h.01"></path></svg><p><strong>Only these three AFFIRM steps are included.</strong> Skip the other three AFFIRM steps for this mock. <strong>No discussion map is required.</strong> You are welcome to create a discussion map if you feel it is necessary. These adjustments apply to the practice mock, not the full live event format.</p></div></section>
-<section aria-labelledby="choose" class="section"><div class="section-head"><span class="number">05</span><h2 id="choose">Request your recorded mock session</h2></div><p class="lead">Select the coaching environment that best matches your role. Your mock will be recorded so a peer in this learning path can review it later.</p><div class="role-grid"><article class="role"><div class="role-head"><div class="role-eyebrow">1:1 coaching practice</div><h3>Appointment Coaches</h3><p>Practice collaboratively building a study plan in an individual student appointment.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student. The session is recorded for peer review.</div><button class="request" id="appointmentButton" onclick="sendRequest('appointment')" type="button"><span>Request Appointment Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="appointmentStatus"></div></div></article><article class="role live"><div class="role-head"><div class="role-eyebrow">Group facilitation practice</div><h3>Live Event Coaches</h3><p>Practice supporting two students as they collaborate, make decisions, and apply study planning strategies.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student 1 · Student 2. The session is recorded for peer review.</div><button class="request" id="liveEventButton" onclick="sendRequest('liveEvent')" type="button"><span>Request Live Event Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="liveEventStatus"></div></div></article></div><p class="note">Submitting a request informs the development program supervisor that you are ready to schedule your mock session. After your recorded mock, you will receive a peer recording when one becomes available, then submit anonymous feedback on the next Canvas page.</p></section>
+<section aria-labelledby="choose" class="section"><div class="section-head"><span class="number">05</span><h2 id="choose">Request your recorded mock session</h2></div><p class="lead">Select the coaching environment that best matches your role. Your mock will be recorded so a peer in this learning path can review it later.</p><div class="name-field"><label for="internName">Your first and last name</label><input id="internName" type="text" maxlength="100" autocomplete="name" placeholder="Enter your name" required/><p class="hint">Your name will be included in the Teams mock session request.</p></div><div class="role-grid"><article class="role"><div class="role-head"><div class="role-eyebrow">1:1 coaching practice</div><h3>Appointment Coaches</h3><p>Practice collaboratively building a study plan in an individual student appointment.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student. The session is recorded for peer review.</div><button class="request" id="appointmentButton" onclick="sendRequest('appointment')" type="button"><span>Request Appointment Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="appointmentStatus"></div></div></article><article class="role live"><div class="role-head"><div class="role-eyebrow">Group facilitation practice</div><h3>Live Event Coaches</h3><p>Practice supporting two students as they collaborate, make decisions, and apply study planning strategies.</p></div><div class="role-bottom"><div class="participants"><strong>Mock format:</strong> Coach · Student 1 · Student 2. The session is recorded for peer review.</div><button class="request" id="liveEventButton" onclick="sendRequest('liveEvent')" type="button"><span>Request Live Event Mock</span><svg aria-hidden="true" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"></path></svg></button><div aria-live="polite" class="status" id="liveEventStatus"></div></div></article></div><p class="note">Submitting a request informs the development program supervisor that you are ready to schedule your mock session. After your recorded mock, you will receive a peer recording when one becomes available, then submit anonymous feedback on the next Canvas page.</p></section>
 <footer class="closing"><strong>Building Better Study Plans</strong> · Step 4 — Mock Session &amp; Peer Review</footer>
 </main>
 <script>
-/* CONFIGURATION: Replace each empty string with the corresponding Teams / Power Automate webhook URL. */
-const WEBHOOKS = {
-  appointment: '', // Appointment-coach request webhook URL
-  liveEvent: ''     // Live-event-coach request webhook URL
-};
+/* Both request buttons use the same Cloudflare Worker. The Worker handles Teams delivery. */
+const MOCK_REQUEST_WORKER = 'https://building-better-study-plans-mock-requests.breanna-evenson.workers.dev/';
+
 async function sendRequest(role){
   const isAppointment = role === 'appointment';
   const button = document.getElementById(isAppointment ? 'appointmentButton' : 'liveEventButton');
   const status = document.getElementById(isAppointment ? 'appointmentStatus' : 'liveEventStatus');
-  const url = WEBHOOKS[role];
+  const nameInput = document.getElementById('internName');
+  const name = nameInput.value.trim();
   status.className = 'status';
-  if(!url){status.textContent = 'This request button has not been connected to a Teams webhook yet. Please contact your supervisor.';status.classList.add('error');return;}
+
+  if (!name) {
+    status.textContent = 'Please enter your first and last name before submitting your request.';
+    status.classList.add('error');
+    nameInput.focus();
+    return;
+  }
+
   button.disabled = true;
   status.textContent = 'Sending your request…';
-  const payload = {
-    learningPath: 'Building Better Study Plans',
-    step: 'Step 4: Mock Session & Peer Review',
-    requestType: isAppointment ? 'Appointment Coach Mock' : 'Live Event Coach Mock',
-    role: isAppointment ? 'Appointment Coach' : 'Live Event Coach',
-    rolePlayers: isAppointment ? 1 : 2,
-    feedbackFormat: 'Recorded mock followed by anonymous peer review',
-    recordingRequired: true,
-    peerReview: 'Peer recording assigned after mock; anonymous feedback submitted on next Canvas page',
-    scenario: 'Student new to course; no existing topic knowledge; no KWL',
-    timestamp: new Date().toISOString()
-  };
-  try{
-    const response = await fetch(url,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
-    if(!response.ok)throw new Error('Webhook returned '+response.status);
+  try {
+    const response = await fetch(MOCK_REQUEST_WORKER, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({name, type: isAppointment ? 'appointment' : 'live-event'})
+    });
+    if (!response.ok) throw new Error('Request returned ' + response.status);
+    const result = await response.json();
+    if (result.success !== true) throw new Error('Request was not confirmed');
     status.textContent = 'Your request was sent successfully.';
     status.classList.add('success');
-  }catch(error){
-    console.error('Mock request failed:',error);
+  } catch (error) {
+    console.error('Mock request failed:', error);
     status.textContent = 'We could not confirm that your request was delivered. Please contact your supervisor instead of submitting repeatedly.';
     status.classList.add('error');
-  }finally{button.disabled=false;}
+  } finally {
+    button.disabled = false;
+  }
 }
 </script>
 </body>
