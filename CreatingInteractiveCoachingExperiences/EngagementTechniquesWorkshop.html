@@ -90,7 +90,7 @@ form.addEventListener('submit', async (event) => {
       body: JSON.stringify({name})
     });
     if (!response.ok) throw new Error('Request failed with status ' + response.status);
-    status.textContent = 'Your workshop request was submitted successfully! Your supervisor will coordinate the invitation.';
+    status.textContent = 'Your workshop request was submitted successfully! The development program supervisor will coordinate the invitation.';
     status.classList.add('success');
     button.textContent = 'Request Submitted';
     document.getElementById('workshopName').readOnly = true;
