@@ -1,0 +1,1593 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Using the Feynman Technique to Aid Comprehension | Navigating Content Conversations</title>
+
+<style>
+:root {
+  --navy: #002855;
+  --deep-navy: #001731;
+  --blue: #0070f0;
+  --green: #8add17;
+  --ink: #001c3b;
+  --muted: #52667a;
+  --line: #d4e3ed;
+  --bg: #ecf5f9;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.7 Arial, sans-serif;
+}
+
+header {
+  background: linear-gradient(120deg,#001731,#002855);
+  color: white;
+  border-bottom: 6px solid var(--green);
+  margin: 24px auto 0;
+  width: calc(100% - 40px);
+  max-width: 1180px;
+  border-radius: 20px;
+  padding: 38px 38px;
+  box-shadow: 0 10px 25px rgba(0,40,82,.08);
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 14px 0 20px;
+  font-size: clamp(30px,4vw,44px);
+  line-height: 1.15;
+}
+
+header p {
+  max-width: 960px;
+  color: #e5edff;
+  margin-bottom: 0;
+}
+
+.layout {
+  max-width: 1180px;
+  width: calc(100% - 40px);
+  margin: auto;
+  padding: 26px 0 40px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 32px 38px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0,40,82,.04);
+}
+
+h2, h3, h4 {
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+h3 {
+  font-size: 21px;
+  margin-top: 28px;
+}
+
+h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+p {
+  margin: 12px 0 20px;
+}
+
+/* Section headings */
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+.section-number {
+  min-width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: var(--navy);
+  color: white;
+  border-bottom: 3px solid var(--green);
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Benefits */
+
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.benefit {
+  background: #f7fbff;
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--blue);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.benefit p {
+  margin: 0;
+}
+
+/* Feynman technique steps */
+
+.strategy-steps {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 14px;
+  margin: 24px 0;
+}
+
+.strategy-step {
+  background: #f5f9fd;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 20px 16px;
+}
+
+.step-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--blue);
+  color: white;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.strategy-step h4 {
+  font-size: 17px;
+}
+
+.strategy-step p {
+  margin: 0;
+  font-size: 15px;
+}
+
+/* Callouts */
+
+.callout {
+  background: #eef6ff;
+  border-left: 5px solid var(--blue);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 24px 0;
+}
+
+.callout p:last-child {
+  margin-bottom: 0;
+}
+
+.callout strong {
+  color: var(--navy);
+}
+
+/* Resource template */
+
+.resource {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  background: #f6faff;
+  border: 1px solid #cfe3fb;
+  border-radius: 14px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.resource h3 {
+  margin: 0 0 8px;
+}
+
+.resource p {
+  margin: 0;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 9px;
+  background: var(--blue);
+  color: white;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.btn:hover {
+  background: #005bc5;
+  transform: translateY(-1px);
+}
+
+.btn:focus-visible,
+input:focus-visible {
+  outline: 3px solid var(--green);
+  outline-offset: 3px;
+}
+
+.btn:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn.secondary {
+  background: #e8eff7;
+  color: var(--navy);
+}
+
+.resource .btn {
+  flex-shrink: 0;
+}
+
+/* Video */
+
+.video-slot {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--deep-navy);
+  margin: 24px 0;
+}
+
+.video-slot iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  border: none;
+}
+
+/* Fishbowl participation requirements */
+
+.requirements {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 18px;
+  margin: 26px 0;
+}
+
+.requirement {
+  background: var(--navy);
+  border-bottom: 5px solid var(--green);
+  color: white;
+  border-radius: 14px;
+  text-align: center;
+  padding: 26px 20px;
+}
+
+.requirement-number {
+  color: var(--green);
+  font-size: 52px;
+  font-weight: bold;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.requirement-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.requirement-description {
+  color: #e0ebf7;
+  font-size: 15px;
+  margin-top: 8px;
+}
+
+/* Participant roles */
+
+.roles {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.role {
+  display: grid;
+  grid-template-columns: 185px 1fr;
+  align-items: center;
+  gap: 22px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #f9fbfd;
+}
+
+.role-title {
+  color: var(--navy);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+/* Rotation table */
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  margin: 22px 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 500px;
+}
+
+th {
+  background: var(--navy);
+  color: white;
+  padding: 16px;
+  text-align: center;
+  font-size: 15px;
+}
+
+td {
+  padding: 18px 14px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+tr:nth-child(even) {
+  background: #f7fafc;
+}
+
+.week {
+  color: var(--navy);
+  font-weight: bold;
+}
+
+.host-label {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 6px;
+  background: var(--blue);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.attendee-label {
+  display: inline-block;
+  padding: 5px 12px;
+  border-radius: 6px;
+  background: #edf2f7;
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* AFFIRM framework */
+
+.affirm {
+  display: grid;
+  gap: 0;
+  margin: 24px 0;
+}
+
+.affirm-step {
+  display: grid;
+  grid-template-columns: 46px 1fr;
+  gap: 18px;
+  position: relative;
+  padding-bottom: 25px;
+}
+
+.affirm-step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 22px;
+  top: 46px;
+  bottom: 0;
+  width: 2px;
+  background: #cbdced;
+}
+
+.affirm-letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 46px;
+  background: var(--navy);
+  border-radius: 11px;
+  color: white;
+  font-weight: bold;
+  font-size: 23px;
+  border-bottom: 3px solid var(--green);
+}
+
+.affirm-content {
+  padding: 16px 20px;
+  background: #f7fafc;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.affirm-content h4 {
+  margin: 0 0 8px;
+}
+
+.affirm-content p {
+  margin: 0;
+}
+
+.affirm-step.skipped .affirm-letter {
+  background: #dce5ee;
+  color: #64748b;
+  border-bottom: none;
+}
+
+.affirm-step.skipped .affirm-content {
+  background: #f2f5f8;
+  color: var(--muted);
+  border-style: dashed;
+}
+
+.affirm-step.skipped h4 {
+  color: var(--muted);
+}
+
+.skip-label {
+  display: inline-block;
+  margin-left: 8px;
+  background: #e1e7ed;
+  color: #52667a;
+  padding: 2px 9px;
+  border-radius: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  vertical-align: middle;
+}
+
+/* Request section */
+
+.request-section {
+  background: linear-gradient(120deg,#001731,#002855);
+  border-radius: 18px;
+  padding: 34px 38px;
+  border-bottom: 5px solid var(--green);
+  color: white;
+  margin-top: 26px;
+}
+
+.request-section h2 {
+  color: white;
+}
+
+.request-section p {
+  color: #e5edff;
+}
+
+.request-section .btn {
+  margin-top: 6px;
+}
+
+.request-form {
+  background: white;
+  color: var(--ink);
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.request-form h3 {
+  margin-top: 0;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  color: var(--navy);
+  margin-bottom: 7px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #b9cbdc;
+  border-radius: 8px;
+  font: inherit;
+  margin-bottom: 18px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.status {
+  padding: 15px;
+  border-radius: 9px;
+  margin-top: 18px;
+  font-size: 15px;
+}
+
+.status.success {
+  background: #eaf7ef;
+  color: #145c3b;
+}
+
+.status.error {
+  background: #fff0ee;
+  color: #a12b20;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.page-foot {
+  text-align: center;
+  color: var(--muted);
+  padding: 18px 0;
+  font-size: 14px;
+}
+
+/* Responsive formatting */
+
+@media(max-width:900px) {
+  .strategy-steps {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  .resource {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media(max-width:760px) {
+  header {
+    padding: 25px 20px;
+    width: calc(100% - 24px);
+    margin-top: 12px;
+  }
+
+  .layout {
+    width: calc(100% - 24px);
+    padding-top: 16px;
+  }
+
+  .panel,
+  .request-section {
+    padding: 24px 20px;
+  }
+
+  .benefit-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .role {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+}
+
+@media(max-width:460px) {
+  .strategy-steps,
+  .requirements {
+    grid-template-columns: 1fr;
+  }
+
+  .affirm-step {
+    gap: 12px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="eyebrow">
+    Intermediate Development | Navigating Content Conversations
+  </div>
+
+  <h1>Using the Feynman Technique to Aid Comprehension</h1>
+
+  <p>
+    Explore how the Feynman Technique can help students
+    strengthen their comprehension, identify gaps in
+    understanding, and build confidence in their ability
+    to navigate course content independently.
+  </p>
+
+</header>
+
+<div class="layout">
+
+<main>
+
+<!-- SECTION 1: UNDERSTANDING THE FEYNMAN TECHNIQUE -->
+
+<section class="panel">
+
+  <div class="section-heading">
+    <div class="section-number">1</div>
+    <h2>Understanding the Feynman Technique</h2>
+  </div>
+
+  <p>
+    The Feynman Technique is a learning strategy that
+    encourages students to explain a concept in its
+    simplest terms. Rather than relying on memorized
+    definitions or repeating information directly from
+    the course material, students demonstrate their
+    understanding by communicating the information
+    in their own words.
+  </p>
+
+  <p>
+    When students struggle to simplify a concept,
+    they have an opportunity to recognize where their
+    understanding may be incomplete. They can then
+    revisit their learning resources, clarify their
+    understanding, and attempt to explain the concept
+    again.
+  </p>
+
+  <h3>Benefits of the Feynman Technique</h3>
+
+  <div class="benefit-grid">
+
+    <div class="benefit">
+      <h4>Strengthens Comprehension</h4>
+      <p>
+        Encourages students to process information
+        beyond memorization and develop a deeper
+        understanding of what they are learning.
+      </p>
+    </div>
+
+    <div class="benefit">
+      <h4>Identifies Gaps in Understanding</h4>
+      <p>
+        Helps students recognize which concepts they
+        understand confidently and which concepts
+        require additional exploration.
+      </p>
+    </div>
+
+    <div class="benefit">
+      <h4>Promotes Independent Learning</h4>
+      <p>
+        Encourages students to navigate their resources
+        and work through confusion without relying on
+        someone else to provide explanations.
+      </p>
+    </div>
+
+    <div class="benefit">
+      <h4>Builds Student Confidence</h4>
+      <p>
+        Gives students an opportunity to recognize
+        their own progress as they become more
+        comfortable explaining complex information.
+      </p>
+    </div>
+
+  </div>
+
+  <h3>How the Strategy Works</h3>
+
+  <div class="strategy-steps">
+
+    <div class="strategy-step">
+
+      <div class="step-number">1</div>
+
+      <h4>Choose a Concept</h4>
+
+      <p>
+        Identify a concept or topic the student
+        wants to better understand.
+      </p>
+
+    </div>
+
+    <div class="strategy-step">
+
+      <div class="step-number">2</div>
+
+      <h4>Explain Simply</h4>
+
+      <p>
+        Have the student explain the concept
+        in their own words using simple language.
+      </p>
+
+    </div>
+
+    <div class="strategy-step">
+
+      <div class="step-number">3</div>
+
+      <h4>Identify Gaps</h4>
+
+      <p>
+        Recognize areas of uncertainty and
+        revisit relevant learning resources.
+      </p>
+
+    </div>
+
+    <div class="strategy-step">
+
+      <div class="step-number">4</div>
+
+      <h4>Refine the Explanation</h4>
+
+      <p>
+        Explain the concept again using the
+        student's strengthened understanding.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="callout">
+
+    <strong>Maintaining the Coaching Lane</strong>
+
+    <p>
+      Your role as a Peer Navigator is to facilitate
+      the use of the strategy, not to evaluate,
+      confirm, or deny the accuracy of the student's
+      explanation. When a student encounters a gap
+      in understanding, encourage them to explore
+      their course resources and refine their own
+      explanation.
+    </p>
+
+    <p>
+      When asking questions, approach the conversation
+      as someone who is trying to understand the
+      student's explanation rather than someone who
+      already knows the answer.
+    </p>
+
+  </div>
+
+  <div class="resource">
+
+    <div>
+
+      <h3>Feynman Technique Template</h3>
+
+      <p>
+        The Feynman Technique template can be found
+        in the <strong>Strategy Toolbox</strong>
+        on the Peer Navigator SharePoint page.
+        You can also access the template directly
+        using the button provided here.
+      </p>
+
+    </div>
+
+    <a class="btn"
+       href="https://www.canva.com/design/DAGPtWj2jao/LyVCNdCFd66hXlYGfLYCqw/edit?utm_content=DAGPtWj2jao&amp;utm_campaign=designshare&amp;utm_medium=link2&amp;utm_source=sharebutton"
+       target="_blank"
+       rel="noopener noreferrer">
+
+      Open Feynman Template &#8599;
+
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- SECTION 2: VIDEO EXAMPLE -->
+
+<section class="panel">
+
+  <div class="section-heading">
+    <div class="section-number">2</div>
+    <h2>The Feynman Technique in Action</h2>
+  </div>
+
+  <p>
+    Watch the following example of a Peer Navigator
+    facilitating the Feynman Technique with a student.
+    As you watch, consider how the Peer Navigator
+    supports the student's comprehension without
+    taking ownership of the learning process.
+  </p>
+
+  <div class="video-slot">
+
+    <iframe
+      src="https://wgu.hosted.panopto.com/Panopto/Pages/Embed.aspx?id=db236de7-0d6b-4788-adc5-b50d014f0e52&amp;autoplay=false"
+      title="Peer Navigator Feynman Technique Demonstration"
+      allow="autoplay; fullscreen"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+  <h3>What to Pay Attention To</h3>
+
+  <ul>
+
+    <li>
+      How the Peer Navigator introduces the strategy
+      and establishes its purpose.
+    </li>
+
+    <li>
+      How the student is encouraged to explain
+      information in their own words.
+    </li>
+
+    <li>
+      How questions are used to encourage the student
+      to expand upon their explanation without
+      turning the conversation into a content quiz.
+    </li>
+
+    <li>
+      How the Peer Navigator responds when the
+      student becomes unsure or gets stuck.
+    </li>
+
+    <li>
+      How ownership of learning remains with
+      the student throughout the session.
+    </li>
+
+  </ul>
+
+</section>
+
+
+<!-- SECTION 3: COACHING FISHBOWL -->
+
+<section class="panel">
+
+  <div class="section-heading">
+    <div class="section-number">3</div>
+    <h2>Apply Your Learning: Coaching Fishbowl</h2>
+  </div>
+
+  <p>
+    Now that you have explored the Feynman Technique
+    and observed an example of its application,
+    you will have an opportunity to practice
+    facilitating the strategy in a collaborative
+    coaching environment.
+  </p>
+
+  <div class="requirements">
+
+    <div class="requirement">
+
+      <div class="requirement-number">1</div>
+
+      <div class="requirement-title">
+        Host a Coaching Fishbowl
+      </div>
+
+      <div class="requirement-description">
+        Facilitate the Feynman Technique in a
+        simulated live event.
+      </div>
+
+    </div>
+
+    <div class="requirement">
+
+      <div class="requirement-number">2</div>
+
+      <div class="requirement-title">
+        Attend Coaching Fishbowls
+      </div>
+
+      <div class="requirement-description">
+        Participate as a student and provide
+        constructive feedback to your peers.
+      </div>
+
+    </div>
+
+  </div>
+
+  <h3>What Is a Coaching Fishbowl?</h3>
+
+  <p>
+    A Coaching Fishbowl is a collaborative practice
+    experience designed to provide Peer Navigators
+    with opportunities to facilitate a simulated
+    live event, observe their peers, and strengthen
+    their coaching skills through shared feedback.
+  </p>
+
+  <p>
+    Each Coaching Fishbowl will consist of three
+    Peer Navigators. One Peer Navigator will serve
+    as the live event host, while the other two
+    will participate as students.
+  </p>
+
+  <p>
+    The Development Program Supervisor or a Senior
+    Peer Navigator will also attend each Coaching
+    Fishbowl to facilitate the experience, help keep
+    the session on track, and support the feedback
+    conversation.
+  </p>
+
+  <p>
+    What makes this experience a Coaching Fishbowl
+    rather than a traditional mock session is the
+    opportunity for peer observation and feedback.
+    At the conclusion of the simulated live event,
+    the attendees will provide constructive feedback
+    to the host, creating an opportunity for everyone
+    to learn from the experience.
+  </p>
+
+  <h3>Participant Roles</h3>
+
+  <div class="roles">
+
+    <div class="role">
+
+      <div class="role-title">
+        Host
+      </div>
+
+      <div>
+        Serve as the live event facilitator.
+        Introduce the Feynman Technique, engage
+        participants in intentional practice,
+        navigate content conversations appropriately,
+        and facilitate reflection.
+      </div>
+
+    </div>
+
+    <div class="role">
+
+      <div class="role-title">
+        Attendees
+      </div>
+
+      <div>
+        Participate as students during the simulated
+        live event. Actively engage in the strategy
+        and provide constructive feedback to the
+        host at the conclusion of the session.
+      </div>
+
+    </div>
+
+    <div class="role">
+
+      <div class="role-title">
+        Fishbowl Facilitator
+      </div>
+
+      <div>
+        The Development Program Supervisor or Senior
+        Peer Navigator will provide structure,
+        help keep the experience on track, and
+        facilitate the peer feedback discussion.
+      </div>
+
+    </div>
+
+  </div>
+
+  <h3>Your Three-Week Coaching Fishbowl Series</h3>
+
+  <p>
+    Your group of three Peer Navigators will meet
+    once a week for three consecutive weeks.
+    Each week, a different Peer Navigator will
+    serve as the host.
+  </p>
+
+  <div class="table-wrap">
+
+    <table>
+
+      <thead>
+
+        <tr>
+          <th>Meeting</th>
+          <th>Peer Navigator 1</th>
+          <th>Peer Navigator 2</th>
+          <th>Peer Navigator 3</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="week">Week 1</td>
+          <td><span class="host-label">Host</span></td>
+          <td><span class="attendee-label">Attendee</span></td>
+          <td><span class="attendee-label">Attendee</span></td>
+        </tr>
+
+        <tr>
+          <td class="week">Week 2</td>
+          <td><span class="attendee-label">Attendee</span></td>
+          <td><span class="host-label">Host</span></td>
+          <td><span class="attendee-label">Attendee</span></td>
+        </tr>
+
+        <tr>
+          <td class="week">Week 3</td>
+          <td><span class="attendee-label">Attendee</span></td>
+          <td><span class="attendee-label">Attendee</span></td>
+          <td><span class="host-label">Host</span></td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+  <h3>Preparing for Your Coaching Fishbowl</h3>
+
+  <p>
+    When preparing to host your Coaching Fishbowl,
+    you will use the <strong>Feynman Technique</strong>
+    as your featured strategy and select any
+    <strong>General Education (Gen Ed) course</strong>
+    of your choice.
+  </p>
+
+  <p>
+    Prepare to facilitate the strategy as you
+    would during a live event, keeping student
+    engagement, independent learning, and appropriate
+    redirection at the center of your approach.
+  </p>
+
+  <div class="callout">
+
+    <strong>Before Your Coaching Fishbowl</strong>
+
+    <ul>
+      <li>Select a General Education course.</li>
+      <li>Identify course content to use during intentional practice.</li>
+      <li>Review the Feynman Technique template.</li>
+      <li>Prepare to introduce and model the strategy.</li>
+      <li>Consider how you will navigate potential content-related challenges.</li>
+    </ul>
+
+  </div>
+
+  <h3>Coaching Fishbowl Session Structure</h3>
+
+  <p>
+    You will use a modified version of the AFFIRM
+    framework when facilitating your Coaching Fishbowl.
+    Because this experience is focused on strategy
+    facilitation and navigating content conversations,
+    you will skip Achievement Orientation and
+    Moving Forward.
+  </p>
+
+  <div class="affirm">
+
+    <div class="affirm-step skipped">
+
+      <div class="affirm-letter">A</div>
+
+      <div class="affirm-content">
+
+        <h4>
+          Achievement Orientation
+          <span class="skip-label">Skip</span>
+        </h4>
+
+        <p>
+          This step is not required during the
+          Coaching Fishbowl.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="affirm-step">
+
+      <div class="affirm-letter">F</div>
+
+      <div class="affirm-content">
+
+        <h4>Frame the Session</h4>
+
+        <p>
+          Establish the purpose of the session,
+          introduce what participants can expect,
+          and communicate expectations for
+          participation.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="affirm-step">
+
+      <div class="affirm-letter">F</div>
+
+      <div class="affirm-content">
+
+        <h4>Focus on the Strategy</h4>
+
+        <p>
+          Introduce the Feynman Technique, explain
+          its purpose and benefits, and model how
+          students can use the strategy to strengthen
+          their comprehension.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="affirm-step">
+
+      <div class="affirm-letter">I</div>
+
+      <div class="affirm-content">
+
+        <h4>Intentional Practice</h4>
+
+        <p>
+          Facilitate opportunities for participants
+          to actively apply the Feynman Technique.
+          Encourage participants to explain concepts
+          in their own words, recognize gaps in
+          understanding, and navigate their resources
+          when additional exploration is needed.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="affirm-step">
+
+      <div class="affirm-letter">R</div>
+
+      <div class="affirm-content">
+
+        <h4>Reflect and Review</h4>
+
+        <p>
+          Guide participants through reflection on
+          their experience using the strategy.
+          Explore what they learned, what they
+          noticed about their comprehension,
+          and how the strategy could support
+          their independent learning.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="affirm-step skipped">
+
+      <div class="affirm-letter">M</div>
+
+      <div class="affirm-content">
+
+        <h4>
+          Moving Forward
+          <span class="skip-label">Skip</span>
+        </h4>
+
+        <p>
+          This step is not required during the
+          Coaching Fishbowl.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <h3>Peer Feedback</h3>
+
+  <p>
+    Following Reflect and Review, the simulated live
+    event will conclude and the Fishbowl Facilitator
+    will transition the group into a peer feedback
+    discussion.
+  </p>
+
+  <p>
+    When participating as an attendee, consider
+    the following questions as you prepare to
+    provide feedback to the host:
+  </p>
+
+  <ul>
+
+    <li>
+      How effectively did the host introduce
+      and facilitate the strategy?
+    </li>
+
+    <li>
+      How did the host create opportunities
+      for student engagement?
+    </li>
+
+    <li>
+      How did the host respond when participants
+      expressed uncertainty or confusion?
+    </li>
+
+    <li>
+      How effectively did the host maintain
+      the distinction between coaching and teaching?
+    </li>
+
+    <li>
+      What could the host continue doing or
+      approach differently in future live events?
+    </li>
+
+  </ul>
+
+</section>
+
+
+<!-- SCHEDULING REQUEST -->
+
+<section class="request-section">
+
+  <h2>Request Your Coaching Fishbowl Series</h2>
+
+  <p>
+    When you are ready to begin your Coaching
+    Fishbowl experience, use the button below
+    to request that your three-week series of
+    Coaching Fishbowl meetings be scheduled.
+  </p>
+
+  <p>
+    Your request will be sent to Development
+    Program leadership, who will coordinate your
+    group and schedule your meetings.
+  </p>
+
+  <button
+    class="btn"
+    id="openRequest"
+    type="button"
+    aria-expanded="false"
+    aria-controls="requestForm">
+
+    Request Coaching Fishbowl Scheduling &#8594;
+
+  </button>
+
+  <form
+    class="request-form"
+    id="requestForm"
+    hidden>
+
+    <h3>Scheduling Request</h3>
+
+    <label for="internName">
+      Your Full Name
+    </label>
+
+    <input
+      type="text"
+      id="internName"
+      name="internName"
+      placeholder="Enter your first and last name"
+      autocomplete="name"
+      required>
+
+    <div class="form-actions">
+
+      <button
+        class="btn"
+        type="submit"
+        id="submitRequest">
+
+        Submit Request
+
+      </button>
+
+      <button
+        class="btn secondary"
+        type="button"
+        id="cancelRequest">
+
+        Cancel
+
+      </button>
+
+    </div>
+
+    <div
+      id="requestStatus"
+      class="status"
+      role="status"
+      aria-live="polite"
+      hidden>
+    </div>
+
+  </form>
+
+</section>
+
+</main>
+
+<footer class="page-foot">
+
+  Navigating Content Conversations
+  &middot;
+  Using the Feynman Technique to Aid Comprehension
+
+</footer>
+
+</div>
+
+<script>
+
+/*
+  Replace the placeholder below with the Cloudflare
+  Worker URL after the Teams webhook is configured.
+*/
+
+const WORKER_URL = "YOUR_CLOUDFLARE_WORKER_URL";
+
+const openRequest =
+  document.getElementById("openRequest");
+
+const requestForm =
+  document.getElementById("requestForm");
+
+const cancelRequest =
+  document.getElementById("cancelRequest");
+
+const submitRequest =
+  document.getElementById("submitRequest");
+
+const requestStatus =
+  document.getElementById("requestStatus");
+
+const internName =
+  document.getElementById("internName");
+
+
+openRequest.addEventListener("click", function() {
+
+  requestForm.hidden = false;
+
+  openRequest.hidden = true;
+
+  openRequest.setAttribute("aria-expanded", "true");
+
+  internName.focus();
+
+});
+
+
+cancelRequest.addEventListener("click", function() {
+
+  requestForm.hidden = true;
+
+  requestStatus.hidden = true;
+
+  openRequest.hidden = false;
+
+  openRequest.setAttribute("aria-expanded", "false");
+
+  openRequest.focus();
+
+});
+
+
+requestForm.addEventListener("submit", async function(event) {
+
+  event.preventDefault();
+
+  const name = internName.value.trim();
+
+  if (!name) {
+
+    showStatus(
+      "Please enter your full name.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  if (WORKER_URL === "YOUR_CLOUDFLARE_WORKER_URL") {
+
+    showStatus(
+      "The scheduling request service has not been configured yet.",
+      "error"
+    );
+
+    return;
+
+  }
+
+  submitRequest.disabled = true;
+
+  cancelRequest.disabled = true;
+
+  submitRequest.textContent = "Submitting...";
+
+  requestStatus.hidden = true;
+
+  const payload = {
+
+    name: name,
+
+    requestType: "Coaching Fishbowl Scheduling",
+
+    program: "Peer Intern Development Program",
+
+    level: "Intermediate",
+
+    learningPath: "Navigating Content Conversations",
+
+    activity: "Using the Feynman Technique to Aid Comprehension",
+
+    meetingSeries: "Three weekly Coaching Fishbowl meetings",
+
+    timestamp: new Date().toISOString()
+
+  };
+
+  try {
+
+    const response = await fetch(WORKER_URL, {
+
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json"
+      },
+
+      body: JSON.stringify(payload)
+
+    });
+
+    if (!response.ok) {
+
+      throw new Error("Request failed");
+
+    }
+
+    showStatus(
+      "Your Coaching Fishbowl scheduling request has been successfully submitted. Development Program leadership will coordinate your meetings.",
+      "success"
+    );
+
+    internName.disabled = true;
+
+    submitRequest.textContent = "Request Submitted";
+
+    cancelRequest.hidden = true;
+
+  } catch (error) {
+
+    showStatus(
+      "Your request could not be submitted. Please try again.",
+      "error"
+    );
+
+    submitRequest.disabled = false;
+
+    cancelRequest.disabled = false;
+
+    submitRequest.textContent = "Submit Request";
+
+  }
+
+});
+
+
+function showStatus(message, type) {
+
+  requestStatus.textContent = message;
+
+  requestStatus.className = "status " + type;
+
+  requestStatus.hidden = false;
+
+}
+
+</script>
+
+</body>
+</html>
