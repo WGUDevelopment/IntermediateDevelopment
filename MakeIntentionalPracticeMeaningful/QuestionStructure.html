@@ -1,0 +1,1031 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Question Stacking vs. Question Scaffolding</title>
+
+<style>
+:root {
+  --navy: #002855;
+  --dark-navy: #001731;
+  --blue: #0070F0;
+  --cyan: #46B1EF;
+  --green: #97E142;
+  --sky: #EEF6F9;
+  --gray: #F1F1F1;
+  --ink: #001731;
+  --muted: #526579;
+  --line: #D9E4EB;
+  --paper: #FFFFFF;
+  --red: #B42318;
+  --red-light: #FFF3F2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--sky);
+  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.container {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 20px 40px;
+}
+
+/* Page header */
+
+.hero {
+  background: linear-gradient(
+    135deg,
+    var(--dark-navy),
+    var(--navy)
+  );
+  color: white;
+  border-radius: 16px;
+  border-bottom: 6px solid var(--green);
+  padding: 30px 32px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  margin-bottom: 8px;
+}
+
+.hero h1 {
+  font-size: clamp(26px, 4vw, 34px);
+  line-height: 1.25;
+  margin: 0;
+  color: white;
+}
+
+/* Content cards */
+
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 26px 28px;
+  margin-bottom: 22px;
+  box-shadow: 0 4px 12px rgba(0, 40, 85, 0.06);
+}
+
+h2 {
+  color: var(--navy);
+  font-size: 22px;
+  line-height: 1.3;
+  margin: 0 0 16px;
+}
+
+h3 {
+  color: var(--navy);
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+p {
+  margin: 0 0 16px;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+/* Comparison cards */
+
+.comparison {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-top: 22px;
+}
+
+.comparison-card {
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.stacking {
+  background: var(--red-light);
+  border-top: 5px solid var(--red);
+}
+
+.scaffolding {
+  background: var(--sky);
+  border-top: 5px solid var(--green);
+}
+
+.comparison-label {
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+.stacking .comparison-label {
+  color: var(--red);
+}
+
+.scaffolding .comparison-label {
+  color: var(--navy);
+}
+
+/* Conversation example */
+
+.conversation {
+  background: var(--gray);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 22px 0;
+}
+
+.speaker {
+  font-size: 12px;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+.speech-bubble {
+  background: var(--navy);
+  color: white;
+  border-radius: 4px 16px 16px 16px;
+  padding: 20px 24px;
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.question-count {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.question-count span {
+  background: white;
+  border: 1px solid #E5B8B4;
+  color: var(--red);
+  border-radius: 20px;
+  padding: 5px 13px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.warning {
+  background: var(--red-light);
+  border-left: 5px solid var(--red);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-top: 20px;
+}
+
+/* Impact of question stacking */
+
+.impact-list {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0;
+}
+
+.impact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--sky);
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.impact-number {
+  background: var(--navy);
+  color: white;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-weight: bold;
+}
+
+.impact-item h3 {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.impact-item p {
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Scaffolding sequence */
+
+.sequence {
+  margin-top: 26px;
+}
+
+.level {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  background: white;
+}
+
+.level-header {
+  padding: 12px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.level-one .level-header {
+  background: var(--navy);
+  color: white;
+}
+
+.level-two .level-header {
+  background: var(--cyan);
+  color: var(--dark-navy);
+}
+
+.level-three .level-header {
+  background: var(--green);
+  color: var(--dark-navy);
+}
+
+.level-body {
+  padding: 22px;
+}
+
+.level-question {
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--navy);
+  margin-bottom: 12px;
+  line-height: 1.5;
+}
+
+.level-description {
+  font-size: 15px;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Wait time indicators */
+
+.wait-time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.clock {
+  width: 34px;
+  height: 34px;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+
+.wait-label {
+  font-weight: bold;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.wait-description {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.arrow {
+  font-size: 24px;
+  color: var(--blue);
+  line-height: 1;
+  margin-top: 8px;
+}
+
+/* Student response */
+
+.outcome {
+  background: #F0FAE5;
+  border: 2px solid var(--green);
+  border-radius: 12px;
+  padding: 22px;
+  text-align: center;
+}
+
+.outcome-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green);
+  color: var(--navy);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  margin: 0 auto 12px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.outcome h3 {
+  margin-bottom: 6px;
+}
+
+/* Key takeaways */
+
+.highlight {
+  background: var(--sky);
+  border-left: 5px solid var(--green);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-top: 22px;
+}
+
+.highlight h3 {
+  margin-bottom: 8px;
+}
+
+.thinking-objective {
+  background: var(--navy);
+  color: white;
+  border-radius: 12px;
+  padding: 24px;
+  margin-top: 22px;
+}
+
+.thinking-objective h3 {
+  color: var(--green);
+}
+
+.thinking-objective p {
+  margin-bottom: 12px;
+}
+
+.thinking-objective p:last-child {
+  margin-bottom: 0;
+}
+
+/* Final transition */
+
+.next-step {
+  background: linear-gradient(
+    135deg,
+    var(--dark-navy),
+    var(--navy)
+  );
+  border-radius: 14px;
+  border-left: 6px solid var(--green);
+  padding: 26px 28px;
+  color: white;
+}
+
+.next-step h2 {
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+.next-step p {
+  color: white;
+  margin: 0;
+}
+
+/* Mobile formatting */
+
+@media (max-width: 650px) {
+  .container {
+    padding: 16px 12px 28px;
+  }
+
+  .hero {
+    padding: 24px 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .comparison {
+    grid-template-columns: 1fr;
+  }
+
+  .conversation {
+    padding: 16px;
+  }
+
+  .speech-bubble {
+    padding: 16px;
+    font-size: 16px;
+  }
+
+  .level-question {
+    font-size: 17px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="container">
+
+  <!-- Page header -->
+
+  <header class="hero">
+
+    <div class="eyebrow">
+      Make Intentional Practice Meaningful
+    </div>
+
+    <h1>Question Stacking vs. Question Scaffolding</h1>
+
+  </header>
+
+
+  <!-- Introduction -->
+
+  <section class="card">
+
+    <h2>Being Intentional About How We Ask Questions</h2>
+
+    <p>
+      Asking powerful questions is an important part of
+      making intentional practice meaningful. However,
+      the way we deliver those questions can be just as
+      important as the questions themselves.
+    </p>
+
+    <p>
+      Our goal is to create opportunities for students
+      to think, explore, and make discoveries. Asking too
+      many questions at once can unintentionally interfere
+      with that process.
+    </p>
+
+    <div class="comparison">
+
+      <div class="comparison-card stacking">
+
+        <div class="comparison-label">
+          Avoid
+        </div>
+
+        <h3>Question Stacking</h3>
+
+        <p>
+          Asking multiple questions before giving the
+          student an opportunity to think and respond.
+        </p>
+
+      </div>
+
+      <div class="comparison-card scaffolding">
+
+        <div class="comparison-label">
+          Practice
+        </div>
+
+        <h3>Question Scaffolding</h3>
+
+        <p>
+          Asking one question at a time and gradually
+          making the question more accessible when
+          additional support is needed.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- Question stacking -->
+
+  <section class="card">
+
+    <h2>Question Stacking</h2>
+
+    <p>
+      Question stacking occurs when we ask multiple
+      questions without allowing the student sufficient
+      time to process and respond to each one.
+    </p>
+
+    <p>
+      Even when each individual question is a powerful
+      question, asking them all at once can diminish
+      their effectiveness.
+    </p>
+
+    <div class="conversation">
+
+      <div class="speaker">
+        Peer Navigator
+      </div>
+
+      <div class="speech-bubble">
+        "What patterns do you see? How do those concepts
+        relate to each other? How could you organize
+        them differently?"
+      </div>
+
+      <div class="question-count">
+        <span>Question 1</span>
+        <span>Question 2</span>
+        <span>Question 3</span>
+      </div>
+
+    </div>
+
+    <div class="warning">
+
+      <strong>What happens here?</strong>
+
+      <p>
+        Multiple questions compete for the student's
+        attention. The student may only respond to one,
+        or may become overwhelmed.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Why stacking should be avoided -->
+
+  <section class="card">
+
+    <h2>Why We Need to Avoid Question Stacking</h2>
+
+    <div class="impact-list">
+
+      <div class="impact-item">
+
+        <div class="impact-number">1</div>
+
+        <div>
+
+          <h3>It Reduces Meaningful Engagement</h3>
+
+          <p>
+            When students are presented with multiple
+            questions at once, they may focus on providing
+            a quick response rather than taking the time
+            to thoughtfully explore each question.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="impact-item">
+
+        <div class="impact-number">2</div>
+
+        <div>
+
+          <h3>Questions Go Unanswered</h3>
+
+          <p>
+            If you ask three questions at once, the student
+            will likely only respond to one. By asking those
+            same questions separately and allowing time for
+            each response, you create opportunities for
+            the student to explore all three.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="impact-item">
+
+        <div class="impact-number">3</div>
+
+        <div>
+
+          <h3>It Can Create Confusion</h3>
+
+          <p>
+            Students may be unsure which question they
+            should answer first or may lose track of
+            earlier questions while processing the
+            most recent one.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="impact-item">
+
+        <div class="impact-number">4</div>
+
+        <div>
+
+          <h3>It Limits Opportunities for Discovery</h3>
+
+          <p>
+            A student's response to one question may
+            reveal an opportunity for a meaningful
+            follow-up question that you would not have
+            anticipated before hearing their response.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="highlight">
+
+      <h3>One Question at a Time</h3>
+
+      <p>
+        Ask a question, allow the student time to think,
+        listen to their response, and use that response
+        to inform your next question.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Question scaffolding -->
+
+  <section class="card">
+
+    <h2>Question Scaffolding</h2>
+
+    <p>
+      Sometimes, even after providing adequate wait time,
+      a student may struggle to respond to a powerful
+      question. This does not necessarily mean that we
+      need to abandon the question or provide an answer.
+    </p>
+
+    <p>
+      Instead, we can scaffold the question by gradually
+      narrowing its scope, making the thinking task
+      more accessible while maintaining the original
+      thinking objective.
+    </p>
+
+    <p>
+      Consider the following example of question scaffolding
+      during intentional practice with a notetaking strategy.
+      The Peer Navigator wants the student to recognize
+      patterns and relationships between concepts.
+    </p>
+
+    <div class="sequence">
+
+
+      <!-- Level 1 -->
+
+      <div class="level level-one">
+
+        <div class="level-header">
+          Level 1 &mdash; Broad
+        </div>
+
+        <div class="level-body">
+
+          <div class="speaker">
+            Peer Navigator
+          </div>
+
+          <div class="level-question">
+            "What patterns are you beginning to notice?"
+          </div>
+
+          <p class="level-description">
+            Begin with an open-ended question that gives
+            the student the freedom to explore and identify
+            patterns independently.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Wait time 1 -->
+
+      <div class="wait-time">
+
+        <svg class="clock"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8"
+             stroke-linecap="round"
+             aria-hidden="true">
+
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+
+        </svg>
+
+        <div class="wait-label">
+          20 seconds of wait time
+        </div>
+
+        <div class="wait-description">
+          The student is still struggling to respond.
+        </div>
+
+        <div class="arrow" aria-hidden="true">
+          &#8595;
+        </div>
+
+      </div>
+
+
+      <!-- Level 2 -->
+
+      <div class="level level-two">
+
+        <div class="level-header">
+          Level 2 &mdash; More Targeted
+        </div>
+
+        <div class="level-body">
+
+          <div class="speaker">
+            Peer Navigator
+          </div>
+
+          <div class="level-question">
+            "Looking at the concepts you've written down,
+            what similarities do you notice?"
+          </div>
+
+          <p class="level-description">
+            Narrow the focus of the question by directing
+            the student's attention to similarities
+            between the concepts they have identified.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Wait time 2 -->
+
+      <div class="wait-time">
+
+        <svg class="clock"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8"
+             stroke-linecap="round"
+             aria-hidden="true">
+
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+
+        </svg>
+
+        <div class="wait-label">
+          15 seconds of wait time
+        </div>
+
+        <div class="wait-description">
+          The student continues to need additional support.
+        </div>
+
+        <div class="arrow" aria-hidden="true">
+          &#8595;
+        </div>
+
+      </div>
+
+
+      <!-- Level 3 -->
+
+      <div class="level level-three">
+
+        <div class="level-header">
+          Level 3 &mdash; Highly Targeted
+        </div>
+
+        <div class="level-body">
+
+          <div class="speaker">
+            Peer Navigator
+          </div>
+
+          <div class="level-question">
+            "Looking at these first two concepts,
+            what is one thing they have in common?"
+          </div>
+
+          <p class="level-description">
+            Make the thinking task more manageable by
+            reducing the number of concepts the student
+            needs to consider at one time.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- Wait time 3 -->
+
+      <div class="wait-time">
+
+        <svg class="clock"
+             viewBox="0 0 24 24"
+             fill="none"
+             stroke="currentColor"
+             stroke-width="1.8"
+             stroke-linecap="round"
+             aria-hidden="true">
+
+          <circle cx="12" cy="12" r="9"/>
+          <path d="M12 7v5l3 2"/>
+
+        </svg>
+
+        <div class="wait-label">
+          5&ndash;10 seconds of wait time
+        </div>
+
+        <div class="arrow" aria-hidden="true">
+          &#8595;
+        </div>
+
+      </div>
+
+
+      <!-- Outcome -->
+
+      <div class="outcome">
+
+        <div class="outcome-icon" aria-hidden="true">
+          &#10003;
+        </div>
+
+        <h3>Student Discovery</h3>
+
+        <p>
+          The student responds and retains ownership
+          of the discovery.
+        </p>
+
+      </div>
+
+    </div>
+
+    <div class="highlight">
+
+      <h3>Scaffold Only When Needed</h3>
+
+      <p>
+        Question scaffolding is responsive to the
+        student's needs. If the student successfully
+        responds to the initial broad question, there
+        is no need to move to a more targeted question.
+        The wait times in this example are illustrative,
+        not fixed requirements. Give students the time
+        they need to process and respond.
+      </p>
+
+    </div>
+
+  </section>
+
+
+  <!-- Maintaining the thinking objective -->
+
+  <section class="card">
+
+    <h2>Maintaining the Original Thinking Objective</h2>
+
+    <p>
+      Notice that throughout the scaffolding example,
+      the Peer Navigator's thinking objective never
+      changes. The student is still being encouraged
+      to recognize patterns and relationships between
+      concepts.
+    </p>
+
+    <p>
+      What changes is the scope of the thinking task.
+      Each question makes the original objective more
+      accessible without taking the thinking away
+      from the student.
+    </p>
+
+    <div class="thinking-objective">
+
+      <h3>We Are Narrowing the Scope, Not Revealing the Answer</h3>
+
+      <p>
+        Question scaffolding is not the process of
+        slowly revealing an answer or providing
+        increasingly obvious hints until the student
+        arrives at a predetermined response.
+      </p>
+
+      <p>
+        Instead, it is about adjusting the level of
+        support so the student can engage in the
+        thinking process independently.
+      </p>
+
+      <p>
+        <strong>
+          The Peer Navigator provides the structure.
+          The student provides the thinking.
+        </strong>
+      </p>
+
+    </div>
+
+    <div class="highlight">
+
+      <h3>Before Scaffolding a Question, Consider:</h3>
+
+      <ul style="margin: 8px 0 0; padding-left: 22px;">
+
+        <li>
+          Have I given the student sufficient time
+          to think?
+        </li>
+
+        <li>
+          What type of thinking am I trying to encourage?
+        </li>
+
+        <li>
+          How can I make this thinking task more
+          accessible without changing its purpose?
+        </li>
+
+        <li>
+          Does my next question still allow the
+          student to make their own discovery?
+        </li>
+
+      </ul>
+
+    </div>
+
+  </section>
+
+
+  <!-- Transition to next activity -->
+
+  <section class="next-step">
+
+    <h2>Now It's Your Turn</h2>
+
+    <p>
+      You've explored an example of how a powerful
+      question can be scaffolded to make a thinking
+      task more accessible while maintaining student
+      ownership. On the next page, you'll have an
+      opportunity to practice developing your own
+      scaffolded questions, gradually moving from
+      broad to more targeted questions while
+      maintaining the original thinking objective.
+    </p>
+
+  </section>
+
+</main>
+
+</body>
+</html>
