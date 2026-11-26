@@ -1,0 +1,722 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Overview | Navigating Content Conversations</title>
+
+<style>
+:root {
+  --navy: #002855;
+  --deep-navy: #001731;
+  --blue: #0070f0;
+  --green: #8add17;
+  --ink: #001c3b;
+  --muted: #52667a;
+  --line: #d4e3ed;
+  --bg: #ecf5f9;
+  --white: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 17px/1.7 Arial, sans-serif;
+}
+
+/* Header */
+
+header {
+  background: linear-gradient(120deg,#001731,#002855);
+  color: white;
+  border-bottom: 6px solid var(--green);
+  margin: 24px auto 0;
+  width: calc(100% - 40px);
+  max-width: 1180px;
+  border-radius: 20px;
+  padding: 38px;
+  box-shadow: 0 10px 25px rgba(0,40,82,.08);
+}
+
+.eyebrow {
+  color: var(--green);
+  font-size: 13px;
+  letter-spacing: 1.8px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 14px 0 20px;
+  font-size: clamp(30px,4vw,44px);
+  line-height: 1.15;
+}
+
+header p {
+  max-width: 960px;
+  color: #e5edff;
+  margin-bottom: 0;
+}
+
+/* Main Layout */
+
+.layout {
+  max-width: 1180px;
+  width: calc(100% - 40px);
+  margin: auto;
+  padding: 26px 0 40px;
+}
+
+.panel {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 32px 38px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 24px rgba(0,40,82,.04);
+}
+
+h2, h3, h4 {
+  color: var(--navy);
+  line-height: 1.4;
+}
+
+h2 {
+  margin-top: 0;
+  font-size: 27px;
+}
+
+h3 {
+  font-size: 21px;
+  margin-top: 28px;
+}
+
+h4 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+p {
+  margin: 12px 0 20px;
+}
+
+/* Estimated Duration */
+
+.duration {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background: #eef6ff;
+  border: 1px solid #cfe3fb;
+  border-left: 5px solid var(--blue);
+  border-radius: 12px;
+  padding: 22px 26px;
+  margin: 28px 0;
+}
+
+.duration-icon {
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+  background: var(--blue);
+  color: white;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.duration-icon svg {
+  width: 29px;
+  height: 29px;
+}
+
+.duration-label {
+  color: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+}
+
+.duration-value {
+  color: var(--navy);
+  font-size: 23px;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-top: 4px;
+}
+
+/* Learning Objectives */
+
+.objectives {
+  padding-left: 26px;
+  margin-bottom: 10px;
+}
+
+.objectives li {
+  padding-left: 6px;
+  margin-bottom: 14px;
+}
+
+.objectives li::marker {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+/* Learning Path Activities */
+
+.activities {
+  display: grid;
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.activity {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: start;
+  gap: 22px;
+  background: #f9fbfd;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 24px;
+}
+
+.activity-number {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--navy);
+  border-bottom: 3px solid var(--green);
+  border-radius: 11px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.activity-content h3 {
+  font-size: 20px;
+  margin: 0 0 8px;
+}
+
+.activity-content p {
+  margin: 10px 0 0;
+}
+
+.activity-type {
+  display: inline-block;
+  background: #e6f1ff;
+  color: #0057b8;
+  padding: 4px 11px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.activity-type + .activity-type {
+  margin-left: 5px;
+}
+
+/* Learning Path Expectations */
+
+.expectations {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,40,82,.06);
+}
+
+.expectation-row {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  gap: 28px;
+  align-items: center;
+  padding: 30px 34px;
+  border-bottom: 1px solid var(--line);
+}
+
+.expectation-row:last-child {
+  border-bottom: none;
+}
+
+.expectation-label {
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.expectation-description {
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+/* Footer */
+
+.page-foot {
+  text-align: center;
+  color: var(--muted);
+  padding: 20px 0;
+  font-size: 14px;
+}
+
+/* Responsive Layout */
+
+@media(max-width:760px) {
+
+  header {
+    padding: 25px 20px;
+    width: calc(100% - 24px);
+    margin-top: 12px;
+  }
+
+  .layout {
+    width: calc(100% - 24px);
+    padding-top: 16px;
+  }
+
+  .panel {
+    padding: 24px 20px;
+  }
+
+  .duration {
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .duration-value {
+    font-size: 20px;
+  }
+
+  .activity {
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+    padding: 18px;
+  }
+
+  .activity-number {
+    width: 40px;
+    height: 40px;
+    font-size: 19px;
+  }
+
+  .activity-content h3 {
+    font-size: 18px;
+  }
+
+  .activity-type {
+    margin-bottom: 5px;
+  }
+
+  .activity-type + .activity-type {
+    margin-left: 0;
+  }
+
+  .expectation-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 24px 20px;
+  }
+
+  h2 {
+    font-size: 23px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="eyebrow">
+    Intermediate Development | Navigating Content Conversations
+  </div>
+
+  <h1>Navigating Content Conversations</h1>
+
+  <p>
+    Strengthen your ability to navigate conversations
+    about course content while maintaining the integrity
+    of the coaching relationship, promoting independent
+    learning, and empowering students to develop their
+    own understanding.
+  </p>
+
+</header>
+
+<div class="layout">
+
+<main>
+
+<!-- LEARNING PATH INTRODUCTION -->
+
+<section class="panel">
+
+  <h2>Welcome to Your Learning Path</h2>
+
+  <p>
+    As a Peer Navigator, you will frequently encounter
+    situations in which students express confusion,
+    ask questions about course content, or seek
+    confirmation of their understanding. Navigating
+    these conversations effectively requires
+    intentional language, thoughtful redirection,
+    and a clear understanding of the distinction
+    between coaching and teaching.
+  </p>
+
+  <p>
+    Throughout this learning path, you will explore
+    the importance of maintaining non-teaching
+    boundaries, evaluate realistic coaching
+    scenarios, and practice strategies that help
+    students strengthen their comprehension without
+    taking ownership of their learning.
+  </p>
+
+  <!-- ESTIMATED DURATION -->
+
+  <div class="duration">
+
+    <div class="duration-icon" aria-hidden="true">
+
+      <svg viewBox="0 0 24 24"
+           fill="none"
+           stroke="currentColor"
+           stroke-width="2"
+           stroke-linecap="round"
+           stroke-linejoin="round">
+
+        <circle cx="12" cy="12" r="9"></circle>
+        <path d="M12 7v5l3 2"></path>
+
+      </svg>
+
+    </div>
+
+    <div>
+
+      <div class="duration-label">
+        Estimated Duration
+      </div>
+
+      <div class="duration-value">
+        6.75 hours over a 7-week period
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- LEARNING OBJECTIVES -->
+
+  <h3>Learning Objectives</h3>
+
+  <p>
+    Upon completion of this learning path,
+    you will be able to:
+  </p>
+
+  <ol class="objectives">
+
+    <li>
+      Evaluate coaching conversations to identify
+      behaviors that cross into content instruction.
+    </li>
+
+    <li>
+      Demonstrate an understanding of how non-teaching
+      boundaries protect the integrity of the
+      coaching relationship.
+    </li>
+
+    <li>
+      Apply intentional redirection techniques to
+      navigate student questions about course content.
+    </li>
+
+    <li>
+      Apply the Feynman Technique to facilitate
+      student understanding without transitioning
+      into content instruction.
+    </li>
+
+  </ol>
+
+</section>
+
+
+<!-- LEARNING PATH ACTIVITIES -->
+
+<section class="panel">
+
+  <h2>What You'll Do</h2>
+
+  <p>
+    This learning path consists of six steps designed
+    to build your understanding of non-teaching
+    boundaries and provide opportunities to apply
+    what you have learned in realistic coaching
+    situations.
+  </p>
+
+  <div class="activities">
+
+    <!-- STEP 1 -->
+
+    <article class="activity">
+
+      <div class="activity-number">1</div>
+
+      <div class="activity-content">
+
+        <h3>Consequences of Teaching During Coaching</h3>
+
+        <span class="activity-type">
+          Reading
+        </span>
+
+        <p>
+          Explore the consequences of crossing into
+          content instruction during coaching and
+          understand why maintaining the distinction
+          between coaching and teaching is essential
+          for students, Peer Navigators, and our
+          professional partnerships.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- STEP 2 -->
+
+    <article class="activity">
+
+      <div class="activity-number">2</div>
+
+      <div class="activity-content">
+
+        <h3>Staying in the Coaching Lane</h3>
+
+        <span class="activity-type">
+          Asynchronous Presentation
+        </span>
+
+        <p>
+          Watch a recorded presentation introducing
+          strategies for navigating content conversations,
+          recognizing potential teaching moments,
+          and intentionally redirecting conversations
+          without transitioning into content instruction.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- STEP 3 -->
+
+    <article class="activity">
+
+      <div class="activity-number">3</div>
+
+      <div class="activity-content">
+
+        <h3>The Language of Effective Coaching</h3>
+
+        <span class="activity-type">
+          Application Activity
+        </span>
+
+        <p>
+          Explore how intentional language influences
+          the coaching experience. Practice transforming
+          teaching-oriented statements and questions
+          into coaching language that promotes student
+          ownership and independent learning.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- STEP 4 -->
+
+    <article class="activity">
+
+      <div class="activity-number">4</div>
+
+      <div class="activity-content">
+
+        <h3>Find the Teaching Moment</h3>
+
+        <span class="activity-type">
+          Written Response Video Quiz
+        </span>
+
+        <p>
+          Evaluate realistic coaching scenarios,
+          identify moments when a Peer Navigator
+          crosses into content instruction, and
+          explain how the situation could have
+          been approached differently.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- STEP 5 -->
+
+    <article class="activity">
+
+      <div class="activity-number">5</div>
+
+      <div class="activity-content">
+
+        <h3>Live Event Redirection</h3>
+
+        <span class="activity-type">
+          Multiple Choice Video Quiz
+        </span>
+
+        <p>
+          Explore challenging live event scenarios
+          and determine the most appropriate response.
+          Observe your selected responses in action
+          and practice making intentional decisions
+          that maintain the coaching lane while
+          supporting student learning.
+        </p>
+
+      </div>
+
+    </article>
+
+
+    <!-- STEP 6 -->
+
+    <article class="activity">
+
+      <div class="activity-number">6</div>
+
+      <div class="activity-content">
+
+        <h3>Using the Feynman Technique to Aid Comprehension</h3>
+
+        <span class="activity-type">
+          Video Demonstration
+        </span>
+
+        <span class="activity-type">
+          Coaching Fishbowls
+        </span>
+
+        <p>
+          Observe a Peer Navigator using the Feynman
+          Technique during a coaching appointment
+          to support student comprehension without
+          transitioning into content instruction.
+        </p>
+
+        <p>
+          Apply your learning through a three-week
+          series of Coaching Fishbowls. You will host
+          one simulated live event using the Feynman
+          Technique and attend two additional sessions,
+          participating as a student and providing
+          constructive feedback to your peers.
+        </p>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
+
+
+<!-- LEARNING PATH EXPECTATIONS -->
+
+<section class="expectations"
+         aria-label="Learning Path Expectations">
+
+  <div class="expectation-row">
+
+    <div class="expectation-label">
+      Required Assignment
+    </div>
+
+    <div class="expectation-description">
+      If you have been added to this learning path,
+      your leadership has assigned it as a required
+      development activity.
+    </div>
+
+  </div>
+
+
+  <div class="expectation-row">
+
+    <div class="expectation-label">
+      Complete in Order
+    </div>
+
+    <div class="expectation-description">
+      Complete each step before moving on to the next.
+      The activities in this learning path are
+      intentionally sequenced to help you develop
+      your understanding, practice intentional
+      redirection, and prepare for your Coaching
+      Fishbowl experience.
+    </div>
+
+  </div>
+
+
+  <div class="expectation-row">
+
+    <div class="expectation-label">
+      Prioritize Direct-Leader Tasks
+    </div>
+
+    <div class="expectation-description">
+      Tasks assigned by your direct leader take
+      priority over Development Program learning
+      path activities. Plan your learning path
+      work around those responsibilities.
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer class="page-foot">
+  Navigating Content Conversations &middot; Overview
+</footer>
+
+</div>
+
+</body>
+</html>
